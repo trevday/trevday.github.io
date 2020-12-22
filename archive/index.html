@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title>
+		
+		Trevor Day
+		
+	</title>
+
+	
+	<link rel="apple-touch-icon" href="/node_logo_180x180.png" sizes="180x180">
+	<link rel="icon" href="/node_logo_32x32.png" sizes="32x32" type="image/png">
+	<link rel="icon" href="/node_logo_16x16.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="/node_logo_32x32.ico">
+	
+
+	
+	<link href="/bootstrap-custom.min.css" rel="stylesheet" type="text/css" />
+	<script defer src="/jquery-3.4.1.slim.min.js"></script>
+	<script defer src="/bootstrap.min.js"></script>
+	
+</head>
+
+<body class="bg-dark">
+	
+
+<div class="d-inline-flex pt-md-4 mt-md-4 pl-md-4 ml-md-4 pt-2 mt-2 pl-2 ml-2">
+	<a href="/index.html" class="btn btn-info rounded-circle">
+		<img src="/back.png" alt="Back to Home" class="img-fluid" />
+	</a>
+</div>
+
+<h1 class="display-1 text-white text-center">Archive</h1>
+
+<div id="archive" class="accordion bg-dark container-fluid">
+
+	<div class="row my-2">
+	
+	
+
+	
+		
+
+		<div class="col-md-3">
+	<div>
+		<h4 class="text-white text-center">Lost Shenkai</h4>
+		<img src="/archive/lost-shenkai/cover.png" alt="Lost Shenkai"
+			class="img-fluid hover-img btn" data-toggle="collapse" data-target="#lost-shenkai" />
+	</div>
+</div>
+<div id="lost-shenkai" class="collapse bg-dark col-12 order-md-last" data-parent="#archive">
+	<div class="bg-light container-fluid m-0 p-0">
+		<div class="container-fluid py-3">
+	<p>This is a VR game created for a game development class. It casts the player as a warrior that must dodge and deflect the projectiles flying at them for as long as possible. The game features dynamic difficulty based on a day/night cycle, and encourages players to use all their senses to survive, fully utilizing all aspects of virtual reality to maximize immersion. The game was built in Unity, with all scripts written in C#.</p>
+<p>I designed some of the wave difficulty and projectiles. I also led the programming effort and wrote the difficulty systems, day/night cycle system, projectile movement and physics, VR controls, and some of the menus and in-game UI.</p>
+
+</div>
+
+	</div>
+</div>
+
+	
+		
+
+		<div class="col-md-3">
+	<div>
+		<h4 class="text-white text-center">Space Lane Runner</h4>
+		<img src="/archive/space-runner/cover.png" alt="Space Lane Runner"
+			class="img-fluid hover-img btn" data-toggle="collapse" data-target="#space-runner" />
+	</div>
+</div>
+<div id="space-runner" class="collapse bg-dark col-12 order-md-last" data-parent="#archive">
+	<div class="bg-light container-fluid m-0 p-0">
+		<div class="embed-responsive embed-responsive-16by9">
+	<iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1v0dxNFpY1CA6gUq5b_2Mo9mrUtGnrk_r/preview" allowfullscreen></iframe>
+</div>
+	<div class="container-fluid py-3">
+	<p>Space Lane Runner is an arcade style infinite runner game where the player takes the
+		controls of
+		a
+		ship
+		and must dodge asteroids as they hurtle through space. It features dynamic difficulty
+		scaling, power-ups, and simple procedural backgrounds. The game was built in Unity, with
+		all scripts
+		written in C#.
+		Models
+		were created by me using Blender.</p>
+		<div class="row">
+			<div class="col-md">
+				<img src="https://trevday.github.io/archive/space-runner/shot2.png" alt="Space Lane Runner Screenshot 2"
+				class="img-fluid" />
+			</div>
+			<div class="col-md">
+				<img src="https://trevday.github.io/archive/space-runner/shot4.png" alt="Space Lane Runner Screenshot 4"
+				class="img-fluid" />
+			</div>
+			<div class="col-md">
+				<img src="https://trevday.github.io/archive/space-runner/shot3.png" alt="Space Lane Runner Screenshot 3"
+				class="img-fluid" />
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+
+	
+		
+
+		<div class="col-md-3">
+	<div>
+		<h4 class="text-white text-center">Sunrise Engine</h4>
+		<img src="/archive/sunrise/cover.png" alt="Sunrise Engine"
+			class="img-fluid hover-img btn" data-toggle="collapse" data-target="#sunrise" />
+	</div>
+</div>
+<div id="sunrise" class="collapse bg-dark col-12 order-md-last" data-parent="#archive">
+	<div class="bg-light container-fluid m-0 p-0">
+		<div class="container-fluid py-3">
+	
+<p class="thick-border-bottom border-secondary">
+	<strong>The Sunrise Engine project is effectively dead and I am no longer actively developing it nor planning to continue with it. The pieces that are done consist of core systems (math library, components, runtime loop, scripting) and a basic rendering engine (rough shader pipeline, rough lighting support, texture support), but I don&rsquo;t believe it is complete enough to warrant posting the code. This was still a valuable learning experience for me, as it was one of the first engines I tried to build. I have ambitions to start another large-scale engine project at some point, this time utilizing what I have learned since attempting Sunrise to craft a more unique and focused design.</strong>
+</p>
+
+<p>Sunrise Engine is my latest project, and my first attempt at building a game engine (and hopefully a game, eventually) entirely &ldquo;from scratch&rdquo;. By &ldquo;from scratch&rdquo;, I mean that I am writing the guts of all the systems in C++, without using any pre-existing game focused libraries or assists. So far I have the entire framework outlined and mostly written, along with most of the main gameplay loop systems, and the backbone of the rendering portion of the engine. As can be seen from the image above, model loading and basic lighting are in place. My next goal is to implement proper physics for collisions, and then from there to try and build a prototype game.</p>
+<p>The overarching design of the engine, which revolves around a flexible system where game objects are essentially containers for components, takes heavy inspiration from Unity, a popular engine that I particularly enjoy using. I&rsquo;ve always wanted to better understand how the pieces I am using worked under the hood, and since Unity isn&rsquo;t open source, I suppose this is my attempt to do so, by doing it myself.</p>
+<p>Although I am trying to write as much as I can myself, there are a few useful libraries and tools I am using so far: OpenGL, GLFW, GLEW, Assimp, and DevIL.</p>
+<p>The model displayed was not created by me, it can be found <a href="https://assetstore.unity.com/packages/3d/vehicles/space/federation-corvette-f3-79860">here</a>.</p>
+
+
+</div>
+
+	</div>
+</div>
+
+	
+		
+
+		<div class="col-md-3">
+	<div>
+		<h4 class="text-white text-center">Circular Breakout</h4>
+		<img src="/archive/breakout/cover.png" alt="Circular Breakout"
+			class="img-fluid hover-img btn" data-toggle="collapse" data-target="#breakout" />
+	</div>
+</div>
+<div id="breakout" class="collapse bg-dark col-12 order-md-last" data-parent="#archive">
+	<div class="bg-light container-fluid m-0 p-0">
+		<div class="container-fluid py-3">
+	<div class="row">
+		<div class="col-md">
+			<p>Based on the original Breakout, but circular! Built in Unity, with scripts written in C#.
+			</p>
+		</div>
+		<div class="col-md">
+			<div class="d-flex justify-content-center">
+				<a href="https://github.com/trevday/circular-breakout" class="btn btn-info rounded-circle">
+					<img src="/github.png" alt="GitHub" class="img-fluid" />
+				</a>
+			</div>
+			<p class="text-center">Repository Link</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md">
+			<img src="https://trevday.github.io/archive/breakout/shot2.png" alt="Circular Breakout Screenshot 2" class="img-fluid" />
+		</div>
+		<div class="col-md">
+			<img src="https://trevday.github.io/archive/breakout/shot6.png" alt="Circular Breakout Screenshot 3" class="img-fluid" />
+		</div>
+		<div class="col-md">
+			<img src="https://trevday.github.io/archive/breakout/shot8.png" alt="Circular Breakout Screenshot 4" class="img-fluid" />
+		</div>
+	</div>
+</div>
+	</div>
+</div>
+
+	
+		
+		</div>
+		<div class="row my-2">
+		
+
+		<div class="col-md-3">
+	<div>
+		<h4 class="text-white text-center">Deflections</h4>
+		<img src="/archive/deflections/cover.png" alt="Deflections"
+			class="img-fluid hover-img btn" data-toggle="collapse" data-target="#deflections" />
+	</div>
+</div>
+<div id="deflections" class="collapse bg-dark col-12 order-md-last" data-parent="#archive">
+	<div class="bg-light container-fluid m-0 p-0">
+		<div class="embed-responsive embed-responsive-16by9">
+	<iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1xpGIZciFewk3T9Ckx-0h2DCAU53sAHn4/preview" allowfullscreen></iframe>
+</div>
+	<div class="container-fluid py-3">
+		<div class="row">
+			<div class="col-md">
+				<p>Deflections is a simple game where the player must bounce their projectile off the walls in order to
+					hit a target. Levels are randomly generated, and the amount of walls to place can be specified. The
+					game was written in C++ using the SDL2 library.</p>
+			</div>
+			<div class="col-md">
+				<div class="d-flex justify-content-center">
+					<a href="https://github.com/trevday/deflections-game" class="btn btn-info rounded-circle">
+						<img src="/github.png" alt="GitHub" class="img-fluid" />
+					</a>
+				</div>
+				<p class="text-center">Repository Link</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md">
+				<img src="https://trevday.github.io/archive/deflections/shot3.png" alt="Deflections Screenshot 2" class="img-fluid" />
+			</div>
+			<div class="col-md">
+				<img src="https://trevday.github.io/archive/deflections/shot4.png" alt="Deflections Screenshot 3" class="img-fluid" />
+			</div>
+			<div class="col-md">
+				<img src="https://trevday.github.io/archive/deflections/shot5.png" alt="Deflections Screenshot 4" class="img-fluid" />
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+
+	
+
+</div>
+
+
+</div>
+
+
+	
+	<footer>
+		<div class="container-fluid py-3">
+	<p class="text-muted text-center m-0 p-0">&copy; 2020 Trevor Day</p>
+	<p class="text-muted text-center m-0 p-0">Built with <a href="https://gohugo.io/">Hugo</a> and <a
+			href="https://getbootstrap.com/">Bootstrap</a>.
+	</p>
+	<p class="text-muted text-center m-0 p-0">Icons made by <a href="https://www.flaticon.com/authors/smartline"
+			title="Smartline">Smartline</a>, <a href="https://www.flaticon.com/authors/freepik"
+			title="Freepik">Freepik</a>,
+		&amp; <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those
+			Icons</a>
+		from <a href="https://www.flaticon.com/" title="Flaticon">
+			www.flaticon.com</a>.</p>
+</div>
+	</footer>
+	
+</body>
+
+</html>
