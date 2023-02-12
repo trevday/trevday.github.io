@@ -3,4 +3,8 @@ User-agent: *
 
 
 Disallow: /
+Disallow: /posts/
+Disallow: /posts/2023-02-10-unreal-engine-slate-sound-device/
+Disallow: /personal/
 Disallow: /archive/
+Disallow: /professional/

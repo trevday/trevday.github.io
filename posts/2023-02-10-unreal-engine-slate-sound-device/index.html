@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta http-equiv="Content-Security-Policy" content="default-src https://trevday.github.io; child-src https://www.youtube-nocookie.com; script-src https://trevday.github.io https://static.cloudflareinsights.com; img-src https://trevday.github.io data:" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>Adding a Custom Slate Sound Device in Unreal Engine - </title>
+
+
+
+
+
+
+
+		<link rel="apple-touch-icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_180x180_resize_box_3.png" sizes="180x180">
+<link rel="icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_32x32_resize_box_3.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_16x16_resize_box_3.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/32x32.ico">
+
+
+  <meta name="generator" content="Hugo 0.98.0" />
+
+  <link rel="stylesheet" href="https://trevday.github.io/css/katex.min.css" />
+  <link rel="stylesheet" href="https://trevday.github.io/fontawesome/css/all.css" /><link rel="stylesheet" href="https://trevday.github.io/css/bootstrap-custom-4.4.1.min.css" /><link rel="stylesheet" href="https://trevday.github.io/css/main.css" />
+
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/fonts.css" />
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/syntax.css" />
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/codeblock.css" />
+  
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/photoswipe.min.css" />
+  <link rel="stylesheet" href="https://trevday.github.io/css/photoswipe.default-skin.min.css" />
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "be8d9d67ff154e919537f330e500e7c2"}'></script>
+  </head>
+  <body>
+    
+<nav class="navbar navbar-light fixed-top navbar-custom navbar-expand-md">
+    <a class="navbar-brand px-3" href="https://trevday.github.io">Trevor Day</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      
+      <ul class="nav navbar-nav ml-auto">
+      
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Posts" href="/posts">Posts</a>
+            </li>
+          
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Professional Work" href="/professional">Professional Work</a>
+            </li>
+          
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Personal Projects" href="/personal">Personal Projects</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              
+              <a class="navlinks-parent px-3">Extra</a>
+              
+              <div class="navlinks-children">
+                
+                  <a href="/archive">College Project Archive</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        
+        <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+        
+            <div class="posts-heading">
+              
+                <h1>Adding a Custom Slate Sound Device in Unreal Engine</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  
+  <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+  
+      <article role="main" class="blog-post">
+        <h3 id="engine-version-4272">Engine Version: 4.27.2</h3>
+<h3 id="prerequisites">Prerequisites</h3>
+<ol>
+<li>Experience with writing C++ for Unreal Engine</li>
+<li>Unreal Engine compiled from source</li>
+<li>Familiarity with <a href="https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/Slate/Overview/">Slate</a> and <a href="https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/UMG/">UMG</a></li>
+<li><a href="https://unrealcommunity.wiki/creating-an-editor-module-x64nt5g3">Editor module for project</a></li>
+</ol>
+<h2 id="why-replace-the-default-slate-sound-device">Why Replace the Default Slate Sound Device?</h2>
+<p>There are a couple reasons to implement a custom <code>ISlateSoundDevice</code>. Perhaps some extra logic around playing a sound in Slate is required. Or maybe a third party audio library being integrated, such as <a href="https://www.audiokinetic.com/en/library/edge/?source=UE4&amp;id=index.html">Wwise</a>, uses custom sound classes that don&rsquo;t adhere nicely to the API defined by <code>USoundBase</code>. The latter is the situation I ran into.</p>
+<p>Unreal&rsquo;s included UMG widgets, such as buttons and checkboxes, have some useful fields related to audio. For example, <code>FButtonStyle</code> includes <code>PressedSlateSound</code> and <code>HoveredSlateSound</code> (&ldquo;Pressed Sound&rdquo; and &ldquo;Hovered Sound&rdquo; in Blueprint). These fields are of the type <code>FSlateSound</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * An intermediary to make UBaseSound available for Slate to play sounds
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="n">USTRUCT</span><span class="p">(</span><span class="n">BlueprintType</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">SLATECORE_API</span> <span class="n">FSlateSound</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// &lt;lines removed&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">protected</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">	* Pointer to the USoundBase. Holding onto it as a UObject because USoundBase is not available in Slate core.
+</span></span></span><span class="line"><span class="cl"><span class="cm">	* Edited via FSlateSoundStructCustomization to ensure you can only set USoundBase assets on it.
+</span></span></span><span class="line"><span class="cl"><span class="cm">	*/</span>
+</span></span><span class="line"><span class="cl">	<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span> <span class="n">BlueprintReadWrite</span><span class="p">,</span> <span class="n">Category</span><span class="o">=</span><span class="n">Sound</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="p">(</span><span class="n">DisplayName</span><span class="o">=</span><span class="s">&#34;Sound&#34;</span><span class="p">,</span> <span class="n">AllowedClasses</span><span class="o">=</span><span class="s">&#34;SoundBase&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="n">UObject</span><span class="o">*</span> <span class="n">ResourceObject</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// &lt;lines removed&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>As the comment above <code>ResourceObject</code> notes, the type of <code>UObject</code> pointed at is expected to be <code>USoundBase</code>. An <code>FSlateSound</code> is played like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">FSlateApplication</span><span class="o">::</span><span class="n">Get</span><span class="p">().</span><span class="n">PlaySound</span><span class="p">(</span> <span class="n">PressedSound</span> <span class="p">);</span>
+</span></span></code></pre></div><p><code>FSlateApplication::PlaySound</code> then uses the <code>SlateSoundDevice</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">FSlateApplication</span><span class="o">::</span><span class="n">PlaySound</span><span class="p">(</span> <span class="k">const</span> <span class="n">FSlateSound</span><span class="o">&amp;</span> <span class="n">SoundToPlay</span><span class="p">,</span> <span class="n">int32</span> <span class="n">UserIndex</span> <span class="p">)</span> <span class="k">const</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">SlateSoundDevice</span><span class="o">-&gt;</span><span class="n">PlaySound</span><span class="p">(</span><span class="n">SoundToPlay</span><span class="p">,</span> <span class="n">UserIndex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><code>SlateSoundDevice</code> is an object which implements the interface <code>ISlateSoundDevice</code>. The default Unreal implementation of <code>ISlateSoundDevice</code> is called <code>FSlateSoundDevice</code>. I recommend taking a look at the implementation of <code>FSlateSoundDevice::PlaySound</code> to understand how it plays the <code>ResourceObject</code> contained in <code>FSlateSound</code>.</p>
+<p>Keeping all this in mind, the options for playing a custom sound class from a built-in UMG widget are:</p>
+<ol>
+<li>Make the custom sound class inherit from <code>USoundBase</code> and implement <code>USoundBase</code>&rsquo;s API correctly. This is pretty clean if possible, but in some cases the <code>USoundBase</code> API can&rsquo;t be fit to requirements of the custom sound class.</li>
+<li>Listen for the appropriate event in Blueprint/C++ (e.g. <code>OnClicked</code> for buttons) and play the sound in response. This is unwieldy, as it requires duplicating a call to play the custom sound class for each widget instance.</li>
+<li>Edit the UMG C++ classes (e.g. <code>UButton</code>) so that instead of <code>FSlateSound</code> they use the custom sound class. This requires editing multiple engine classes in a pretty involved way, plus it creates an engine level dependency on the audio library containing the custom sound class.</li>
+<li>Make subclasses of UMG widget classes. This can be done, although inheriting from UMG widgets can be tricky. It also leaves the old sound variables like <code>PressedSlateSound</code> present, so someone working on UI Blueprints might be confused as to which field they should use.</li>
+<li>Make <code>FSlateSound</code> point at the custom sound class and create an implementation of <code>ISlateSoundDevice</code> which plays the custom sound class. This is the approach I went with.</li>
+</ol>
+<h2 id="fslatesound-modification"><code>FSlateSound</code> Modification</h2>
+<p>This is the only change to engine code. In <code>FSlateSound</code>, add the name of the custom sound class to <code>AllowedClasses</code> above <code>ResourceObject</code>, like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span> <span class="n">BlueprintReadWrite</span><span class="p">,</span> <span class="n">Category</span><span class="o">=</span><span class="n">Sound</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="p">(</span><span class="n">DisplayName</span><span class="o">=</span><span class="s">&#34;Sound&#34;</span><span class="p">,</span> <span class="n">AllowedClasses</span><span class="o">=</span><span class="s">&#34;SoundBase,CustomSoundClass&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">UObject</span><span class="o">*</span> <span class="n">ResourceObject</span><span class="p">;</span>
+</span></span></code></pre></div><p>What is <code>AllowedClasses</code>? As described <a href="https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Metadata/">here</a>, this specifier determines the type of assets displayed in the editor&rsquo;s asset picker for this particular field. In order to select assets of the custom sound class when editing widgets this specifier has to include the custom sound class. Luckily, <code>AllowedClasses</code> does not create a compile time dependency, so the name of the custom sound class can be inserted even though this module (SlateCore) does not have a dependency on the custom audio library. Note that <code>AllowedClasses</code> expects the &ldquo;display&rdquo; name of the class, which is not prefixed. So it uses &ldquo;SoundBase&rdquo; instead of <code>USoundBase</code>, for example. Once this change is made the editor can be compiled and opened, a button widget can be made, and its &ldquo;Pressed Sound&rdquo; can be set to the custom sound class! But if tested, the sound won&rsquo;t play yet&hellip;</p>
+<h2 id="implement-slate-sound-device">Implement Slate Sound Device</h2>
+<p>Now an <code>ISlateSoundDevice</code> implementation that knows how to play the custom sound class is needed. First, create an entirely new C++ class which inherits from <code>ISlateSoundDevice</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#pragma once
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Sound/ISlateSoundDevice.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">FSlateSound</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">FCustomSlateSoundDevice</span> <span class="o">:</span> <span class="k">public</span> <span class="n">ISlateSoundDevice</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="k">virtual</span> <span class="o">~</span><span class="n">FCustomSlateSoundDevice</span><span class="p">()</span> <span class="k">override</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">PlaySound</span><span class="p">(</span><span class="k">const</span> <span class="n">FSlateSound</span><span class="o">&amp;</span> <span class="n">Sound</span><span class="p">,</span> <span class="n">int32</span> <span class="n">UserIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">virtual</span> <span class="kt">float</span> <span class="nf">GetSoundDuration</span><span class="p">(</span><span class="k">const</span> <span class="n">FSlateSound</span><span class="o">&amp;</span> <span class="n">Sound</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p><em>(Unfortunately it is not possible to inherit from <code>FSlateSoundDevice</code> without making an engine change, as <code>FSlateSoundDevice</code> is not publicly exported by its module.)</em></p>
+<p>Note that <code>ISlateSoundDevice</code> is <em>not</em> an <a href="https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Interfaces/">Unreal interface</a>, even though it is prefixed with &ldquo;I&rdquo;. It is just a <a href="https://en.cppreference.com/w/cpp/language/abstract_class">C++ abstract class</a>. Because <code>PlaySound</code> and <code>GetSoundDuration</code> are both declared as pure virtual functions in <code>ISlateSoundDevice</code>, they will need to be implemented in <code>FCustomSlateSoundDevice</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">FCustomSlateSoundDevice</span><span class="o">::</span><span class="n">PlaySound</span><span class="p">(</span><span class="k">const</span> <span class="n">FSlateSound</span><span class="o">&amp;</span> <span class="n">Sound</span><span class="p">,</span> <span class="n">int32</span> <span class="n">UserIndex</span><span class="p">)</span> <span class="k">const</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">UObject</span><span class="o">*</span> <span class="k">const</span> <span class="n">Object</span> <span class="o">=</span> <span class="n">Sound</span><span class="p">.</span><span class="n">GetResourceObject</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">Object</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">USoundBase</span><span class="o">*</span> <span class="k">const</span> <span class="n">SoundResource</span> <span class="o">=</span> <span class="n">Cast</span><span class="o">&lt;</span><span class="n">USoundBase</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Object</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">SoundResource</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// Copied from FSlateSoundDevice::PlaySound
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span> <span class="p">(</span><span class="n">GEngine</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="n">FAudioDeviceHandle</span> <span class="n">AudioDevice</span> <span class="o">=</span> <span class="n">GEngine</span><span class="o">-&gt;</span><span class="n">GetActiveAudioDevice</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="p">(</span><span class="n">AudioDevice</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="n">FActiveSound</span> <span class="n">NewActiveSound</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="n">NewActiveSound</span><span class="p">.</span><span class="n">SetSound</span><span class="p">(</span><span class="n">SoundResource</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				<span class="n">NewActiveSound</span><span class="p">.</span><span class="n">bIsUISound</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="n">NewActiveSound</span><span class="p">.</span><span class="n">UserIndex</span> <span class="o">=</span> <span class="n">UserIndex</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="n">NewActiveSound</span><span class="p">.</span><span class="n">Priority</span> <span class="o">=</span> <span class="n">SoundResource</span><span class="o">-&gt;</span><span class="n">Priority</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">				<span class="n">AudioDevice</span><span class="o">-&gt;</span><span class="n">AddNewActiveSound</span><span class="p">(</span><span class="n">NewActiveSound</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">UCustomSoundClass</span><span class="o">*</span> <span class="k">const</span> <span class="n">CustomSound</span> <span class="o">=</span> <span class="n">Cast</span><span class="o">&lt;</span><span class="n">UCustomSoundClass</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Object</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">CustomSound</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// &lt;Code to play sound&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// An Object but no SoundResource/CustomSoundClass means that the FSlateSound is holding an invalid object; report that as an error
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogSlateSoundDevice</span><span class="p">,</span> <span class="n">Error</span><span class="p">,</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">&#34;A sound contains a non-sound resource &#39;%s&#39;&#34;</span><span class="p">),</span> <span class="o">*</span><span class="n">Object</span><span class="o">-&gt;</span><span class="n">GetName</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">float</span> <span class="n">FCustomSlateSoundDevice</span><span class="o">::</span><span class="n">GetSoundDuration</span><span class="p">(</span><span class="k">const</span> <span class="n">FSlateSound</span><span class="o">&amp;</span> <span class="n">Sound</span><span class="p">)</span> <span class="k">const</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">UObject</span><span class="o">*</span> <span class="k">const</span> <span class="n">Object</span> <span class="o">=</span> <span class="n">Sound</span><span class="p">.</span><span class="n">GetResourceObject</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">Object</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="mf">0.0f</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">USoundBase</span><span class="o">*</span> <span class="k">const</span> <span class="n">SoundResource</span> <span class="o">=</span> <span class="n">Cast</span><span class="o">&lt;</span><span class="n">USoundBase</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Object</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">SoundResource</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">SoundResource</span><span class="o">-&gt;</span><span class="n">Duration</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">UCustomSoundClass</span><span class="o">*</span> <span class="k">const</span> <span class="n">CustomSound</span> <span class="o">=</span> <span class="n">Cast</span><span class="o">&lt;</span><span class="n">UCustomSoundClass</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Object</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">CustomSound</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="cm">/* &lt;Code to get duration&gt; */</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mf">0.0f</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>There are a couple details of <code>PlaySound</code> worth noting:</p>
+<ul>
+<li>There is no access to <code>UWorld</code> in <code>PlaySound</code>. This is expected, as Slate does not depend on a valid World existing. In fact, as the editor itself is Slate, the editor uses <code>ISlateSoundDevice</code> to play audio. So once this change is made, the editor will play sounds through the custom implementation of <code>ISlateSoundDevice</code>. If playing editor sounds is required, make sure to support <code>USoundBase</code>!</li>
+<li><code>PlaySound</code> is only ever called on the &ldquo;game&rdquo; thread.</li>
+<li>The <code>UserIndex</code> argument appears to be unused. As far as I can tell no call to <code>PlaySound</code> ever passes in a <code>UserIndex</code>, so it will always be zero, which is the default value. In addition, <code>FSlateSoundDevice</code> passes <code>UserIndex</code> along to <code>FActiveSound</code>, but it&rsquo;s never used in a meaningful way in the audio code. If I had to guess, I think this is a legacy argument which was intended to differentiate users on a single instance of Unreal (splitscreen) but it is now unused (or was never used). For now, it can be ignored.</li>
+</ul>
+<h2 id="initializing-slate-sound-device">Initializing Slate Sound Device</h2>
+<p>The engine initializes <code>FSlateSoundDevice</code> in <code>UEngine::Init</code> in the following block:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">FSlateApplication</span><span class="o">&amp;</span> <span class="n">CurrentSlateApp</span> <span class="o">=</span> <span class="n">FSlateApplication</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">CurrentSlateApp</span><span class="p">.</span><span class="n">InitializeSound</span><span class="p">(</span> <span class="n">TSharedRef</span><span class="o">&lt;</span><span class="n">FSlateSoundDevice</span><span class="o">&gt;</span><span class="p">(</span> <span class="k">new</span> <span class="n">FSlateSoundDevice</span><span class="p">()</span> <span class="p">)</span> <span class="p">);</span>
+</span></span></code></pre></div><p>As covered, <code>ISlateSoundDevice</code> is <em>not</em> an Unreal interface, and <code>FSlateSoundDevice</code> is <em>not</em> a <code>UObject</code>. In fact, this system does not use any of the nice <a href="https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/ProgrammingWithCPP/UnrealArchitecture/TSubclassOf/"><code>TSubclassOf</code></a> configuration that other systems use. Instead, something a bit more manual is required.</p>
+<p>First, create subclasses of <code>UGameEngine</code> and <code>UUnrealEdEngine</code> as described <a href="https://nerivec.github.io/old-ue4-wiki/pages/create-custom-engine-classes-for-your-game-module.html">here</a>. Then override <code>Init</code> in both and after the call to <code>Super::Init</code> put the following:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">IsRunningDedicatedServer</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">IsRunningCommandlet</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">FSlateApplication</span><span class="o">&amp;</span> <span class="n">CurrentSlateApp</span> <span class="o">=</span> <span class="n">FSlateApplication</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="n">CurrentSlateApp</span><span class="p">.</span><span class="n">InitializeSound</span><span class="p">(</span> <span class="n">TSharedRef</span><span class="o">&lt;</span><span class="n">FCustomSlateSoundDevice</span><span class="o">&gt;</span><span class="p">(</span> <span class="k">new</span> <span class="n">FCustomSlateSoundDevice</span><span class="p">()</span> <span class="p">)</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>This will overwrite the existing <code>FSlateSoundDevice</code> with the custom sound device class. Since <code>FSlateSoundDevice</code> is stored with a shared ref, once <code>FSlateApplication</code> is not referencing the old <code>FSlateSoundDevice</code> it will be garbage collected. This does result in some wasted work creating and then destroying <code>FSlateSoundDevice</code>, but <code>FSlateSoundDevice</code> does not do much in its constructor or destructor so it shouldn&rsquo;t be too bad.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>We have successfully implemented <code>ISlateSoundDevice</code>, and can play custom sounds! Load into the editor, create a button, set &ldquo;Pressed Sound&rdquo; to the custom sound asset, and test!</p>
+
+
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+        <p class="credits copyright text-muted">
+          
+            <a href="https://trevday.github.io">Trevor Day</a>
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2023
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          Built with <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://trevday.github.io/js/katex.min.js"></script>
+<script src="https://trevday.github.io/js/auto-render.min.js"></script>
+<script src="https://trevday.github.io/js/jquery-3.5.1.slim.min.js"></script><script src="https://trevday.github.io/js/bootstrap-4.4.1.min.js"></script>
+
+<script src="https://trevday.github.io/js/main.js"></script>
+
+
+
+
+
+<script> renderMathInElement(document.body); </script><script src="https://trevday.github.io/js/photoswipe.min.js"></script>
+<script src="https://trevday.github.io/js/photoswipe-ui-default.min.js"></script><script src="https://trevday.github.io/js/load-photoswipe.js"></script>
+
+
+    
+  </body>
+</html>
+

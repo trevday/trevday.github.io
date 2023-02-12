@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta http-equiv="Content-Security-Policy" content="default-src https://trevday.github.io; child-src https://www.youtube-nocookie.com; script-src https://trevday.github.io https://static.cloudflareinsights.com; img-src https://trevday.github.io data:" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>Flow Field Pathfinding (2018) - </title>
+
+
+
+
+
+
+
+		<link rel="apple-touch-icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_180x180_resize_box_3.png" sizes="180x180">
+<link rel="icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_32x32_resize_box_3.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_16x16_resize_box_3.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/32x32.ico">
+
+
+  <meta name="generator" content="Hugo 0.98.0" />
+
+  <link rel="stylesheet" href="https://trevday.github.io/css/katex.min.css" />
+  <link rel="stylesheet" href="https://trevday.github.io/fontawesome/css/all.css" /><link rel="stylesheet" href="https://trevday.github.io/css/bootstrap-custom-4.4.1.min.css" /><link rel="stylesheet" href="https://trevday.github.io/css/main.css" />
+
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/fonts.css" />
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/syntax.css" />
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/codeblock.css" />
+  
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/photoswipe.min.css" />
+  <link rel="stylesheet" href="https://trevday.github.io/css/photoswipe.default-skin.min.css" />
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "be8d9d67ff154e919537f330e500e7c2"}'></script>
+  </head>
+  <body>
+    
+<nav class="navbar navbar-light fixed-top navbar-custom navbar-expand-md">
+    <a class="navbar-brand px-3" href="https://trevday.github.io">Trevor Day</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      
+      <ul class="nav navbar-nav ml-auto">
+      
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Posts" href="/posts">Posts</a>
+            </li>
+          
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Professional Work" href="/professional">Professional Work</a>
+            </li>
+          
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Personal Projects" href="/personal">Personal Projects</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              
+              <a class="navlinks-parent px-3">Extra</a>
+              
+              <div class="navlinks-children">
+                
+                  <a href="/archive">College Project Archive</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        
+        <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+        
+            <div class="archive-heading">
+              
+                <h1>Flow Field Pathfinding (2018)</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  
+  <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+  
+      <article role="main" class="blog-post">
+        <div class="container-fluid py-3">
+	<div class="d-flex justify-content-center footer-links">
+		<a href="https://github.com/trevday/flow-field-pathfinding-processing" title="GitHub" class="footer-links">
+			<span class="fa-stack fa-lg">
+				<i class="fas fa-circle fa-stack-2x"></i>
+				<i class="fab fa-github fa-stack-1x fa-inverse"></i>
+			</span>
+			GitHub
+		</a>
+	</div>
+	<p>This is a project I wrote for a class in Game AI. The idea with this project was to implement a version of
+		flow field pathfinding as described in <a
+			href="http://www.gameaipro.com/GameAIPro/GameAIPro_Chapter23_Crowd_Pathfinding_and_Steering_Using_Flow_Field_Tiles.pdf">this
+			paper</a>. Java with Processing was possibly not the best choice for
+		performance, but it offers a simple library for visual output and I wanted to prototype
+		quickly without worrying about those details. I believe this flow field implementation is pretty
+		successful, and the
+		"extra features" such as formations work well, but individual unit steering does leave something to
+		be
+		desired.
+		That, however, was not the focus of the project, and is really here to aid in providing a visual
+		demonstration of the algorithm.</p>
+	<h5>Some Quick Features:</h5>
+	<ul>
+		<li>Flow field pathfinding which subdivides the map into "sectors" of a configurable size
+			<ul>
+				<li>A per sector flow field cache that is shared amongst all units, which means units
+					navigating
+					in a similar manner through a given sector can use the same calculated flow field</li>
+				<li>A* search to chain sectors for unit navigation</li>
+			</ul>
+		</li>
+		<li>Navigation optimizes for differences in terrain "height", or difficulty of moving through that
+			terrain
+			<ul>
+				<li>Also supports navigating around impassable obstacles</li>
+			</ul>
+		</li>
+		<li>
+			A formation system that allows grouping arbitrary numbers of units together with a specified
+			separation pattern
+			<ul>
+				<li>
+					The formation system is very modular, and adding new formations requires a single new
+					function
+				</li>
+				<li>
+					Formations are dynamic and will reform correctly if units are added or removed
+				</li>
+			</ul>
+		</li>
+		<li>
+			Units have a very simple collision avoidance behavior that sends out a single raycast and
+			applies an
+			avoidance force if the unit will collide with something
+		</li>
+	</ul>
+	<div class="row my-2">
+		<div class="col-md">
+			<div class="text-center">
+				<img srcset="
+	/archive/flow-field/shot2_hu02d8ce26b2ad9de901f7924520ca64dc_119548_200x0_resize_box_3.png 200w,
+	/archive/flow-field/shot2_hu02d8ce26b2ad9de901f7924520ca64dc_119548_400x0_resize_box_3.png 400w,
+	/archive/flow-field/shot2_hu02d8ce26b2ad9de901f7924520ca64dc_119548_600x0_resize_box_3.png 600w"
+	sizes="
+	(max-width: 640px) 200px,
+	(max-width: 1366px) 400px,
+	600px"
+	src="/archive/flow-field/shot2_hu02d8ce26b2ad9de901f7924520ca64dc_119548_600x0_resize_box_3.png"
+	alt="Flow Field Pathfinding Screenshot 2"
+	class="img-fluid"
+	
+	
+	loading="lazy" />
+			</div>
+		</div>
+		<div class="col-md">
+			<div class="text-center">
+				<img srcset="
+	/archive/flow-field/shot3_hud07218381182c9197465862cd1845626_118087_200x0_resize_box_3.png 200w,
+	/archive/flow-field/shot3_hud07218381182c9197465862cd1845626_118087_400x0_resize_box_3.png 400w,
+	/archive/flow-field/shot3_hud07218381182c9197465862cd1845626_118087_600x0_resize_box_3.png 600w"
+	sizes="
+	(max-width: 640px) 200px,
+	(max-width: 1366px) 400px,
+	600px"
+	src="/archive/flow-field/shot3_hud07218381182c9197465862cd1845626_118087_600x0_resize_box_3.png"
+	alt="Flow Field Pathfinding Screenshot 3"
+	class="img-fluid"
+	
+	
+	loading="lazy" />
+			</div>
+		</div>
+		<div class="col-md">
+			<div class="text-center">
+				<img srcset="
+	/archive/flow-field/shot4_hu0b89e9f4ea6d6bdf4603924ca1c38a28_100764_200x0_resize_box_3.png 200w,
+	/archive/flow-field/shot4_hu0b89e9f4ea6d6bdf4603924ca1c38a28_100764_400x0_resize_box_3.png 400w,
+	/archive/flow-field/shot4_hu0b89e9f4ea6d6bdf4603924ca1c38a28_100764_600x0_resize_box_3.png 600w"
+	sizes="
+	(max-width: 640px) 200px,
+	(max-width: 1366px) 400px,
+	600px"
+	src="/archive/flow-field/shot4_hu0b89e9f4ea6d6bdf4603924ca1c38a28_100764_600x0_resize_box_3.png"
+	alt="Flow Field Pathfinding Screenshot 4"
+	class="img-fluid"
+	
+	
+	loading="lazy" />
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md">
+			<div class="text-center">
+				<img srcset="
+	/archive/flow-field/shot5_huf9ca2211a0a554eb4b8fbfc77f9f0e36_24036_200x0_resize_box_3.png 200w,
+	/archive/flow-field/shot5_huf9ca2211a0a554eb4b8fbfc77f9f0e36_24036_400x0_resize_box_3.png 400w,
+	/archive/flow-field/shot5_huf9ca2211a0a554eb4b8fbfc77f9f0e36_24036_600x0_resize_box_3.png 600w"
+	sizes="
+	(max-width: 640px) 200px,
+	(max-width: 1366px) 400px,
+	600px"
+	src="/archive/flow-field/shot5_huf9ca2211a0a554eb4b8fbfc77f9f0e36_24036_600x0_resize_box_3.png"
+	alt="Flow Field Pathfinding Screenshot 5"
+	class="img-fluid"
+	
+	
+	loading="lazy" />
+			</div>
+		</div>
+		<div class="col-md">
+			<div class="text-center">
+				<img srcset="
+	/archive/flow-field/shot7_hu5a130d2926ebec5e28709cb9f1216042_102484_200x0_resize_box_3.png 200w,
+	/archive/flow-field/shot7_hu5a130d2926ebec5e28709cb9f1216042_102484_400x0_resize_box_3.png 400w,
+	/archive/flow-field/shot7_hu5a130d2926ebec5e28709cb9f1216042_102484_600x0_resize_box_3.png 600w"
+	sizes="
+	(max-width: 640px) 200px,
+	(max-width: 1366px) 400px,
+	600px"
+	src="/archive/flow-field/shot7_hu5a130d2926ebec5e28709cb9f1216042_102484_600x0_resize_box_3.png"
+	alt="Flow Field Pathfinding Screenshot 6"
+	class="img-fluid"
+	
+	
+	loading="lazy" />
+			</div>
+		</div>
+		<div class="col-md">
+			<div class="text-center">
+				<img srcset="
+	/archive/flow-field/shot8_hu3323f9c93b6ba4289fbd1ef0886c0616_195488_200x0_resize_box_3.png 200w,
+	/archive/flow-field/shot8_hu3323f9c93b6ba4289fbd1ef0886c0616_195488_400x0_resize_box_3.png 400w,
+	/archive/flow-field/shot8_hu3323f9c93b6ba4289fbd1ef0886c0616_195488_600x0_resize_box_3.png 600w"
+	sizes="
+	(max-width: 640px) 200px,
+	(max-width: 1366px) 400px,
+	600px"
+	src="/archive/flow-field/shot8_hu3323f9c93b6ba4289fbd1ef0886c0616_195488_600x0_resize_box_3.png"
+	alt="Flow Field Pathfinding Screenshot 7"
+	class="img-fluid"
+	
+	
+	loading="lazy" />
+			</div>
+		</div>
+	</div>
+</div>
+
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://trevday.github.io/archive/resist-and-transmit/" data-toggle="tooltip" data-placement="top" title="Resist &amp; Transmit (2018)">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://trevday.github.io/archive/eternal2d/" data-toggle="tooltip" data-placement="top" title="Eternal2D Engine (2018)">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+        <p class="credits copyright text-muted">
+          
+            <a href="https://trevday.github.io">Trevor Day</a>
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2023
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          Built with <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://trevday.github.io/js/katex.min.js"></script>
+<script src="https://trevday.github.io/js/auto-render.min.js"></script>
+<script src="https://trevday.github.io/js/jquery-3.5.1.slim.min.js"></script><script src="https://trevday.github.io/js/bootstrap-4.4.1.min.js"></script>
+
+<script src="https://trevday.github.io/js/main.js"></script>
+
+
+
+
+
+<script> renderMathInElement(document.body); </script><script src="https://trevday.github.io/js/photoswipe.min.js"></script>
+<script src="https://trevday.github.io/js/photoswipe-ui-default.min.js"></script><script src="https://trevday.github.io/js/load-photoswipe.js"></script>
+
+
+    
+  </body>
+</html>
+
