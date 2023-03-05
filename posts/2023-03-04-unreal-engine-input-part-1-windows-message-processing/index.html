@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta http-equiv="Content-Security-Policy" content="default-src https://trevday.github.io https://cloudflareinsights.com; child-src https://www.youtube-nocookie.com; script-src https://trevday.github.io https://static.cloudflareinsights.com; img-src https://trevday.github.io data:" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>Unreal Engine Input Part 1 - Windows Message Processing - </title>
+
+
+
+
+
+
+
+		<link rel="apple-touch-icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_180x180_resize_box_3.png" sizes="180x180">
+<link rel="icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_32x32_resize_box_3.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_16x16_resize_box_3.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/32x32.ico">
+
+
+  <meta name="generator" content="Hugo 0.98.0" />
+
+  <link rel="stylesheet" href="https://trevday.github.io/css/katex.min.css" />
+  <link rel="stylesheet" href="https://trevday.github.io/fontawesome/css/all.css" /><link rel="stylesheet" href="https://trevday.github.io/css/bootstrap-custom-4.4.1.min.css" /><link rel="stylesheet" href="https://trevday.github.io/css/main.css" />
+
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/fonts.css" />
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/syntax.css" />
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/codeblock.css" />
+  
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/photoswipe.min.css" />
+  <link rel="stylesheet" href="https://trevday.github.io/css/photoswipe.default-skin.min.css" />
+
+
+  </head>
+  <body>
+    
+<nav class="navbar navbar-light fixed-top navbar-custom navbar-expand-md">
+    <a class="navbar-brand px-3" href="https://trevday.github.io">Trevor Day</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      
+      <ul class="nav navbar-nav ml-auto">
+      
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Posts" href="/posts">Posts</a>
+            </li>
+          
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Professional Work" href="/professional">Professional Work</a>
+            </li>
+          
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Personal Projects" href="/personal">Personal Projects</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              
+              <a class="navlinks-parent px-3">Extra</a>
+              
+              <div class="navlinks-children">
+                
+                  <a href="/archive">College Project Archive</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        
+        <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+        
+            <div class="posts-heading">
+              
+                <h1>Unreal Engine Input Part 1 - Windows Message Processing</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  
+  <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+  
+      <article role="main" class="blog-post">
+        <h3 id="engine-version-510">Engine Version: 5.1.0</h3>
+<h3 id="introduction">Introduction</h3>
+<p>There are a variety of tools Unreal Engine provides to <a href="https://docs.unrealengine.com/5.1/en-US/input-overview-in-unreal-engine/">handle user input</a> in a game. These posts aim to break down the code that delivers those inputs, providing insights that could be useful if modifying or extending engine input systems. <em>Unless otherwise noted, the following descriptions apply to both editor and standalone builds.</em></p>
+<h4 id="code-access">Code Access</h4>
+<p>There are links in this post to the Unreal Engine GitHub repository. To gain access follow the instructions <a href="https://www.unrealengine.com/en-US/ue-on-github">here</a>.</p>
+<h2 id="windows-message-processing">Windows Message Processing</h2>
+<p>The first step in input processing is to retrieve inputs from the platform. Here I will cover how this works for Windows builds of Unreal Engine. (For other platforms, check out other implementations of <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/ApplicationCore/Public/GenericPlatform/GenericApplication.h#L435"><code>GenericApplication</code></a>.)</p>
+<p>In Windows, user input is passed to the program via <a href="https://learn.microsoft.com/en-us/windows/win32/learnwin32/window-messages">Window Messages</a>. As described in that link, Window Messages have a few processing steps:</p>
+<ol>
+<li><code>GetMessage</code> or <code>PeekMessage</code></li>
+<li><code>TranslateMessage</code></li>
+<li><code>DispatchMessage</code></li>
+</ol>
+<p>In Unreal, these steps are executed in the function <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/ApplicationCore/Private/Windows/WindowsPlatformApplicationMisc.cpp#L105"><code>WinPumpMessages</code></a> (there are a few other places that implement Window Message processing, but they are for other parts of the editor such as the splash screen).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">WinPumpMessages</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">TRACE_CPUPROFILER_EVENT_SCOPE</span><span class="p">(</span><span class="n">WinPumpMessages</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">MSG</span> <span class="n">Msg</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">while</span><span class="p">(</span> <span class="n">PeekMessage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Msg</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">PM_REMOVE</span><span class="p">)</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="n">TranslateMessage</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">Msg</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="n">DispatchMessage</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">Msg</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><code>WinPumpMessages</code> is called from <code>FWindowsPlatformApplicationMisc::PumpMessages</code>, which in turn is called from <code>FEngineLoop::Tick</code> with <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Launch/Private/LaunchEngineLoop.cpp#L5285">this line</a>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">FPlatformApplicationMisc</span><span class="o">::</span><span class="n">PumpMessages</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</span></span></code></pre></div><p><code>FPlatformApplicationMisc</code> is defined as <code>FWindowsPlatformApplicationMisc</code> <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/ApplicationCore/Public/Windows/WindowsPlatformApplicationMisc.h#L43">via a typedef</a> when compiling a Windows build:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">FWindowsPlatformApplicationMisc</span> <span class="n">FPlatformApplicationMisc</span><span class="p">;</span>
+</span></span></code></pre></div><p>Using the typedef means <code>FPlatformApplicationMisc</code> can be redefined as whichever platform specific class is needed for a particular build target.</p>
+<p><code>DispatchMessage</code> triggers a call to the <a href="https://learn.microsoft.com/en-us/windows/win32/learnwin32/writing-the-window-procedure">Window Procedure</a> of the message target. Unreal&rsquo;s Window Procedure is <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/ApplicationCore/Public/Windows/WindowsApplication.h#L392"><code>FWindowsApplication::AppWndProc</code></a>. To set the Window Procedure, a <a href="https://learn.microsoft.com/en-us/windows/win32/learnwin32/creating-a-window">Window Class</a> is required. <code>FWindowsApplication::RegisterClass</code> is responsible for registering Unreal&rsquo;s Window Class. In <code>FWindowsApplication::RegisterClass</code>, <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/ApplicationCore/Private/Windows/WindowsApplication.cpp#L330"><code>lpfnWndProc</code> is set to <code>FWindowsApplication::AppWndProc</code></a>. <code>AppWndProc</code> is pretty simple, it just calls <code>WindowsApplication_WndProc</code>. <code>WindowsApplication_WndProc</code> is also pretty simple, but has a very important line in it:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">ensure</span><span class="p">(</span> <span class="n">IsInGameThread</span><span class="p">()</span> <span class="p">);</span>
+</span></span></code></pre></div><p>This indicates that message pumping is always expected to happen in the game thread, and not the render thread, which is crucial to avoiding visual stalls as noted <a href="https://learn.microsoft.com/en-us/windows/win32/learnwin32/writing-the-window-procedure#avoiding-bottlenecks-in-your-window-procedure">here</a>. Unreal&rsquo;s approach to threaded rendering can be read about <a href="https://docs.unrealengine.com/5.1/en-US/threaded-rendering-in-unreal-engine/">here</a>.</p>
+<p>Next up is <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/ApplicationCore/Private/Windows/WindowsApplication.cpp#L927"><code>FWindowsApplication::ProcessMessage</code></a>. First, this function gives <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/ApplicationCore/Private/Windows/WindowsApplication.cpp#L993">registered handlers a chance to process the message</a>. Registering a handler is described <a href="https://gmpreussner.com/reference/hooking-into-the-windows-message-queue-in-ue4">here</a>. Quick aside: the <a href="https://docs.unrealengine.com/5.1/en-US/rawinput-plugin-in-unreal-engine/">RawInput</a> plugin actually works by registering a handler like this. Check out <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Plugins/Experimental/RawInput/Source/RawInput/Public/Windows/RawInputWindows.h#L237"><code>FRawInputWindows</code></a> to see an example.</p>
+<p>If the message is not absorbed by one of these handlers, processing of the message continues. There&rsquo;s a <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/ApplicationCore/Private/Windows/WindowsApplication.cpp#L1012">large switch statement</a> over the message type. Some message types get handled right away, such as <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/ApplicationCore/Private/Windows/WindowsApplication.cpp#L1253"><code>WM_NCCALCSIZE</code></a>, which <a href="https://learn.microsoft.com/en-us/windows/win32/winmsg/wm-nccalcsize">has to return the size and position of the window client area</a>. Others do some processing before calling <code>FWindowsApplication::DeferMessage</code>, such as <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/ApplicationCore/Private/Windows/WindowsApplication.cpp#L1109"><code>WM_INPUT</code></a>, which is used for <a href="https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-input">raw device input processing</a>. The possible messages for input are defined <a href="https://learn.microsoft.com/en-us/windows/win32/learnwin32/mouse-clicks">here</a>, <a href="https://learn.microsoft.com/en-us/windows/win32/learnwin32/mouse-movement">here</a>, <a href="https://learn.microsoft.com/en-us/windows/win32/learnwin32/other-mouse-operations">here</a>, and <a href="https://learn.microsoft.com/en-us/windows/win32/learnwin32/keyboard-input">here</a>. Luckily, Unreal has defined a function to determine whether a given Window Message is related to input: <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/ApplicationCore/Private/Windows/WindowsApplication.cpp#L2649"><code>FWindowsApplication::IsInputMessage</code></a>.</p>
+<p><code>FWindowsApplication::ProcessMessage</code> forwards any relevant input messages that are not immediately processed to <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/ApplicationCore/Private/Windows/WindowsApplication.cpp#L2717"><code>FWindowsApplication::DeferMessage</code></a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">FWindowsApplication</span><span class="o">::</span><span class="n">DeferMessage</span><span class="p">(</span> <span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FWindowsWindow</span><span class="o">&gt;&amp;</span> <span class="n">NativeWindow</span><span class="p">,</span> <span class="n">HWND</span> <span class="n">InHWnd</span><span class="p">,</span> <span class="n">uint32</span> <span class="n">InMessage</span><span class="p">,</span> <span class="n">WPARAM</span> <span class="n">InWParam</span><span class="p">,</span> <span class="n">LPARAM</span> <span class="n">InLParam</span><span class="p">,</span> <span class="n">int32</span> <span class="n">MouseX</span><span class="p">,</span> <span class="n">int32</span> <span class="n">MouseY</span><span class="p">,</span> <span class="n">uint32</span> <span class="n">RawInputFlags</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span> <span class="n">GPumpingMessagesOutsideOfMainLoop</span> <span class="o">&amp;&amp;</span> <span class="n">bAllowedToDeferMessageProcessing</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">DeferredMessages</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span> <span class="n">FDeferredWindowsMessage</span><span class="p">(</span> <span class="n">NativeWindow</span><span class="p">,</span> <span class="n">InHWnd</span><span class="p">,</span> <span class="n">InMessage</span><span class="p">,</span> <span class="n">InWParam</span><span class="p">,</span> <span class="n">InLParam</span><span class="p">,</span> <span class="n">MouseX</span><span class="p">,</span> <span class="n">MouseY</span><span class="p">,</span> <span class="n">RawInputFlags</span> <span class="p">)</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// When not deferring messages, process them immediately
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">ProcessDeferredMessage</span><span class="p">(</span> <span class="n">FDeferredWindowsMessage</span><span class="p">(</span> <span class="n">NativeWindow</span><span class="p">,</span> <span class="n">InHWnd</span><span class="p">,</span> <span class="n">InMessage</span><span class="p">,</span> <span class="n">InWParam</span><span class="p">,</span> <span class="n">InLParam</span><span class="p">,</span> <span class="n">MouseX</span><span class="p">,</span> <span class="n">MouseY</span><span class="p">,</span> <span class="n">RawInputFlags</span> <span class="p">)</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Since the route I am describing came from <code>FEngineLoop::Tick</code>, <code>GPumpingMessagesOutsideOfMainLoop</code> will be false, which means <code>FWindowsApplication::ProcessDeferredMessage</code> is called right away. Other places that pump messages with <code>GPumpingMessagesOutsideOfMainLoop</code> set to true will run the deferred message processing flow, which adds messages to a queue for later processing. As mentioned earlier, most places that pump messages outside the main loop are used for specific editor functionality, such as modals or the splash screen. Either way, <code>FWindowsApplication::ProcessDeferredMessage</code> is eventually called for each message in the queue.</p>
+<p><a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/ApplicationCore/Private/Windows/WindowsApplication.cpp#L1916"><code>FWindowsApplication::ProcessDeferredMessage</code></a> looks awfully similar to <code>FWindowsApplication::ProcessMessage</code>, with a big switch statement over the message type. This time, however, no messages are deferred for later. Everything is handled here. For user inputs, <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/ApplicationCore/Private/Windows/WindowsApplication.cpp#L1971">there will generally be a call such as <code>MessageHandler-&gt;OnX</code></a>, where X is something like &ldquo;KeyDown&rdquo; or &ldquo;MouseDown&rdquo;. <code>MessageHandler</code> is a protected member variable of <code>GenericApplication</code>, which <code>FWindowsApplication</code> inherits from. The declaration of <code>MessageHandler</code> is:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">TSharedRef</span><span class="o">&lt;</span> <span class="k">class</span> <span class="nc">FGenericApplicationMessageHandler</span> <span class="o">&gt;</span> <span class="n">MessageHandler</span><span class="p">;</span>
+</span></span></code></pre></div><p>There are a few different classes that inherit from <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/ApplicationCore/Public/GenericPlatform/GenericApplicationMessageHandler.h#L212"><code>FGenericApplicationMessageHandler</code></a>, but the most relevant one is <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Public/Framework/Application/SlateApplication.h#L183"><code>FSlateApplication</code></a>. <code>FSlateApplication</code> is the default <code>MessageHandler</code> for editor and standalone builds. It is possible to create a custom subclass of <code>FGenericApplicationMessageHandler</code> and register it using <code>SetMessageHandler</code>, but that will not be covered here. <code>FSlateApplication</code> is intended to be used across all platforms, so this is the end of Windows specific code and the beginning of platform agnostic code! The next post will discuss how Slate handles input.</p>
+<h2 id="extra-engine-shutdown">Extra: Engine Shutdown</h2>
+<p>As mentioned <a href="https://learn.microsoft.com/en-us/windows/win32/learnwin32/window-messages">here</a>, one way to manage application shutdown is the following:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">MSG</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">{</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="p">(</span><span class="n">GetMessage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">TranslateMessage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DispatchMessage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Application exits main loop and shuts down
+</span></span></span></code></pre></div><p>This works because <code>GetMessage</code> returns a non-zero value if it finds the <code>WM_QUIT</code> message on the queue. But Unreal doesn&rsquo;t do this in <code>WinPumpMessages</code>, it uses <code>PeekMessage</code> instead. So how does the engine know when to shut down?</p>
+<p>The engine does still receive and process the <code>WM_CLOSE</code> message, which is described <a href="https://learn.microsoft.com/en-us/windows/win32/learnwin32/closing-the-window">here</a>. Processing <code>WM_CLOSE</code> eventually results in <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/SlateCore/Private/Widgets/SWindow.cpp#L1359"><code>SWindow::RequestDestroyWindow</code></a> being called.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cm">/** Request that this window be destroyed. The window is not destroyed immediately. Instead it is placed in a queue for destruction on next Tick */</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">SWindow</span><span class="o">::</span><span class="n">RequestDestroyWindow</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span> <span class="n">RequestDestroyWindowOverride</span><span class="p">.</span><span class="n">IsBound</span><span class="p">()</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">RequestDestroyWindowOverride</span><span class="p">.</span><span class="n">Execute</span><span class="p">(</span> <span class="n">SharedThis</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">FSlateApplicationBase</span><span class="o">::</span><span class="n">Get</span><span class="p">().</span><span class="n">RequestDestroyWindow</span><span class="p">(</span> <span class="n">SharedThis</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The next part differs a bit in editor builds versus standalone builds. In an editor build, the main editor window has a <code>RequestDestroyWindowOverride</code> bound. This override is <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Editor/MainFrame/Private/Frame/MainFrameHandler.h#L171"><code>FMainFrameHandler::CloseRootWindowOverride</code></a>. This function is responsible for initiating editor shutdown. In a standalone build, <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/GameEngine.cpp#L710"><code>UGameEngine::OnGameWindowClosed</code></a> is registered as a callback for when the game window is closed. <code>OnGameWindowClosed</code> will close the game viewport and release rendering resources, and when there are no more viewports to render to on a <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/GameEngine.cpp#L1678">standalone client it will shut down</a>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">GIsClient</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">GameViewport</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">FApp</span><span class="o">::</span><span class="n">CanEverRender</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogEngine</span><span class="p">,</span> <span class="n">Log</span><span class="p">,</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">&#34;All Windows Closed&#34;</span><span class="p">)</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">FPlatformMisc</span><span class="o">::</span><span class="n">RequestExit</span><span class="p">(</span> <span class="mi">0</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div>
+
+        
+
+        
+
+        
+      </article>
+
+      
+        
+        <ul class="pager blog-pager pagination justify-content-between">
+          
+            <li class="page-item">
+              <a class="page-link" href="https://trevday.github.io/posts/2023-02-10-unreal-engine-slate-sound-device/" data-toggle="tooltip" data-placement="top" title="Adding a Custom Slate Sound Device in Unreal Engine">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+        
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+        <p class="credits copyright text-muted">
+          
+            <a href="https://trevday.github.io">Trevor Day</a>
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2023
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          Built with <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://trevday.github.io/js/katex.min.js"></script>
+<script src="https://trevday.github.io/js/auto-render.min.js"></script>
+<script src="https://trevday.github.io/js/jquery-3.5.1.slim.min.js"></script><script src="https://trevday.github.io/js/bootstrap-4.4.1.min.js"></script>
+
+<script src="https://trevday.github.io/js/main.js"></script>
+
+
+
+
+
+<script> renderMathInElement(document.body); </script><script src="https://trevday.github.io/js/photoswipe.min.js"></script>
+<script src="https://trevday.github.io/js/photoswipe-ui-default.min.js"></script><script src="https://trevday.github.io/js/load-photoswipe.js"></script><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "be8d9d67ff154e919537f330e500e7c2"}'></script>
+
+
+    
+  </body>
+</html>
+
