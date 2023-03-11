@@ -4,6 +4,7 @@ User-agent: *
 
 Disallow: /
 Disallow: /posts/
+Disallow: /posts/2023-03-11-unreal-engine-input-part-2-slate-input-routing/
 Disallow: /posts/2023-03-04-unreal-engine-input-part-1-windows-message-processing/
 Disallow: /posts/2023-02-10-unreal-engine-slate-sound-device/
 Disallow: /personal/

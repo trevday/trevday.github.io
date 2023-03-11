@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta http-equiv="Content-Security-Policy" content="default-src https://trevday.github.io https://cloudflareinsights.com; child-src https://www.youtube-nocookie.com; script-src https://trevday.github.io https://static.cloudflareinsights.com; img-src https://trevday.github.io data:" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>Unreal Engine Input Part 2 - Slate Input Routing - </title>
+
+
+
+
+
+
+
+		<link rel="apple-touch-icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_180x180_resize_box_3.png" sizes="180x180">
+<link rel="icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_32x32_resize_box_3.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_16x16_resize_box_3.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/32x32.ico">
+
+
+  <meta name="generator" content="Hugo 0.98.0" />
+
+  <link rel="stylesheet" href="https://trevday.github.io/css/katex.min.css" />
+  <link rel="stylesheet" href="https://trevday.github.io/fontawesome/css/all.css" /><link rel="stylesheet" href="https://trevday.github.io/css/bootstrap-custom-4.4.1.min.css" /><link rel="stylesheet" href="https://trevday.github.io/css/main.css" />
+
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/fonts.css" />
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/syntax.css" />
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/codeblock.css" />
+  
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/photoswipe.min.css" />
+  <link rel="stylesheet" href="https://trevday.github.io/css/photoswipe.default-skin.min.css" />
+
+
+  </head>
+  <body>
+    
+<nav class="navbar navbar-light fixed-top navbar-custom navbar-expand-md">
+    <a class="navbar-brand px-3" href="https://trevday.github.io">Trevor Day</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      
+      <ul class="nav navbar-nav ml-auto">
+      
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Posts" href="/posts">Posts</a>
+            </li>
+          
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Professional Work" href="/professional">Professional Work</a>
+            </li>
+          
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Personal Projects" href="/personal">Personal Projects</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              
+              <a class="navlinks-parent px-3">Extra</a>
+              
+              <div class="navlinks-children">
+                
+                  <a href="/archive">College Project Archive</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        
+        <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+        
+            <div class="posts-heading">
+              
+                <h1>Unreal Engine Input Part 2 - Slate Input Routing</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  
+  <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+  
+      <article role="main" class="blog-post">
+        <h3 id="engine-version-510">Engine Version: 5.1.0</h3>
+<h3 id="introduction">Introduction</h3>
+<p>There are a variety of tools Unreal Engine provides to <a href="https://docs.unrealengine.com/5.1/en-US/input-overview-in-unreal-engine/">handle user input</a> in a game. These posts aim to break down the code that delivers those inputs, providing insights that could be useful if modifying or extending engine input systems. <em>Unless otherwise noted, the following descriptions apply to both editor and standalone builds.</em></p>
+<p>Part 1 can be found <a href="/posts/2023-03-04-unreal-engine-input-part-1-windows-message-processing">here</a>.</p>
+<h4 id="code-access">Code Access</h4>
+<p>There are links in this post to the Unreal Engine GitHub repository. To gain access follow the instructions <a href="https://www.unrealengine.com/en-US/ue-on-github">here</a>.</p>
+<h2 id="slate-input-routing">Slate Input Routing</h2>
+<p>As mentioned in the previous post, <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Public/Framework/Application/SlateApplication.h#L183"><code>FSlateApplication</code></a> inherits from <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/ApplicationCore/Public/GenericPlatform/GenericApplicationMessageHandler.h#L212"><code>FGenericApplicationMessageHandler</code></a> and is the default <code>MessageHandler</code> in Unreal editor and standalone builds. <code>FSlateApplication</code> implements a number of input handling functions defined in <code>FGenericApplicationMessageHandler</code> such as <code>OnKeyDown</code>, <code>OnMouseDown</code>, <code>OnMouseMove</code>, etc. Each of these handling functions follows a similar structure, although some of the details may vary. Generally that structure is:</p>
+<ol>
+<li>Information passed to the function is compiled into an input event struct such as <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/SlateCore/Public/Input/Events.h#L405"><code>FKeyEvent</code></a>.</li>
+<li>This structure is passed to an associated processing function such as <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Private/Framework/Application/SlateApplication.cpp#L4450"><code>FSlateApplication::ProcessKeyDownEvent</code></a>.</li>
+<li><a href="https://forums.unrealengine.com/t/slate-intercepting-input-events-with-preprocessors/264947">Input preprocessors</a> are given a <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Private/Framework/Application/SlateApplication.cpp#L4471">chance to handle the input event</a>.</li>
+<li>If not handled by preprocessors, the input event is routed (see <a href="#routing">Routing</a> section below) to the appropriate Slate widget, which is of type <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/SlateCore/Public/Widgets/SWidget.h"><code>SWidget</code></a>. <code>SWidget</code> is the base class all Slate widgets inherit from. <code>SWidget</code> has various virtual input handling functions such as <code>OnKeyDown</code>, <code>OnMouseDown</code>, <code>OnMouseMove</code>, although it does <em>not</em> inherit from <code>FGenericApplicationMessageHandler</code>. Subclasses of <code>SWidget</code> override these functions to implement their input handling logic.</li>
+<li>The <code>SWidget</code> returns an <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/SlateCore/Public/Input/Reply.h"><code>FReply</code></a> to indicate whether the input event was handled and whether any other special handling actions, such as <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/SlateCore/Public/Input/Reply.h#L169">setting user focus</a> or <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/SlateCore/Public/Input/Reply.h#L211">doing a drag and drop</a>, should take place.</li>
+<li>The <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Private/Framework/Application/SlateApplication.cpp#L3126"><code>FReply</code> is processed</a> and special handling actions are executed. Typically if the reply indicates the input event was handled input routing and processing will end.</li>
+</ol>
+<p>While examining this code, note calls such as:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#if WITH_SLATE_DEBUGGING
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>	<span class="n">FSlateDebugging</span><span class="o">::</span><span class="n">BroadcastInputEvent</span><span class="p">(</span><span class="n">ESlateDebuggingInputEvent</span><span class="o">::</span><span class="n">KeyDown</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">Event</span><span class="p">,</span> <span class="n">TempReply</span><span class="p">,</span> <span class="n">SomeWidgetGettingEvent</span><span class="p">.</span><span class="n">Widget</span><span class="p">,</span> <span class="n">Event</span><span class="p">.</span><span class="n">GetKey</span><span class="p">().</span><span class="n">GetFName</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#endif
+</span></span></span></code></pre></div><p>This is actually very useful Slate debugging functionality, which is presented in the <a href="https://docs.unrealengine.com/5.1/en-US/console-slate-debugger-in-unreal-engine/">Slate Debugger</a>. It can be used to track how inputs are processed by Slate.</p>
+<h3 id="routing">Routing</h3>
+<p>There are two primary event routing functions in Slate: <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Private/Framework/Application/SlateApplication.cpp#L384"><code>FEventRouter::RouteAlongFocusPath</code></a> and <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Private/Framework/Application/SlateApplication.cpp#L393"><code>FEventRouter::Route</code></a>. <code>FEventRouter::RouteAlongFocusPath</code> is actually just a wrapper for calling <code>FEventRouter::Route</code> with the return type set to <code>FReply</code>, so <code>FEventRouter::Route</code> is really the only event routing function. I have added inline comments in the following code block to break down the major parts of this function:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span> <span class="k">typename</span> <span class="n">ReplyType</span><span class="p">,</span> <span class="k">typename</span> <span class="n">RoutingPolicyType</span><span class="p">,</span> <span class="k">typename</span> <span class="n">EventType</span><span class="p">,</span> <span class="k">typename</span> <span class="n">FuncType</span> <span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="n">ReplyType</span> <span class="n">Route</span><span class="p">(</span> <span class="n">FSlateApplication</span><span class="o">*</span> <span class="n">ThisApplication</span><span class="p">,</span> <span class="n">RoutingPolicyType</span> <span class="n">RoutingPolicy</span><span class="p">,</span> <span class="n">EventType</span> <span class="n">EventCopy</span><span class="p">,</span> <span class="k">const</span> <span class="n">FuncType</span><span class="o">&amp;</span> <span class="n">Lambda</span><span class="p">,</span> <span class="n">ESlateDebuggingInputEvent</span> <span class="n">DebuggingInputEvent</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Defaults to an unhandled reply, in case none of the widgets handle the event or it can&#39;t be routed to a widget.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">ReplyType</span> <span class="n">Reply</span> <span class="o">=</span> <span class="n">ReplyType</span><span class="o">::</span><span class="n">Unhandled</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// The routing policy determines the routing path, which is an array of widgets
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// representing a vertical slice of the Slate widget tree. These are the potential widgets
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// the input event can be routed to. The top level widget is at the front, with the
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// &#34;leafmost&#34; widget last. There will be more info on the routing policy later.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">const</span> <span class="n">FWidgetPath</span><span class="o">&amp;</span> <span class="n">RoutingPath</span> <span class="o">=</span> <span class="n">RoutingPolicy</span><span class="p">.</span><span class="n">GetRoutingPath</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// The widgets currently under the cursor are potentially needed for processing of the reply,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// to perform special actions such as drag and drop.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">const</span> <span class="n">FWidgetPath</span><span class="o">*</span> <span class="n">WidgetsUnderCursor</span> <span class="o">=</span> <span class="n">RoutingPolicy</span><span class="p">.</span><span class="n">GetWidgetsUnderCursor</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// &lt;CODE REMOVED&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// This is the routing loop, which uses the routing policy to iterate through widgets.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">for</span> <span class="p">(;</span> <span class="o">!</span><span class="n">Reply</span><span class="p">.</span><span class="n">IsEventHandled</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">RoutingPolicy</span><span class="p">.</span><span class="n">ShouldKeepGoing</span><span class="p">();</span> <span class="n">RoutingPolicy</span><span class="p">.</span><span class="n">Next</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">const</span> <span class="n">FWidgetAndPointer</span><span class="o">&amp;</span> <span class="n">ArrangedWidget</span> <span class="o">=</span> <span class="n">RoutingPolicy</span><span class="p">.</span><span class="n">GetWidget</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="c1">// &lt;CODE REMOVED&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		
+</span></span><span class="line"><span class="cl">		<span class="c1">// Here the Lambda, which is an argument of this function, is applied to the widget and the
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// event. The Lambda will apply the SWidget function OnKeyDown, OnMouseDown, OnMouseMove,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// or some other handling function to the event. ProcessReply is then called, which
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// executes special handling actions such as drag and drop, and routing continues if
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// the reply indicates the event was not handled.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">Reply</span> <span class="o">=</span> <span class="n">Lambda</span><span class="p">(</span><span class="n">ArrangedWidget</span><span class="p">,</span> <span class="n">EventCopy</span><span class="p">).</span><span class="n">SetHandler</span><span class="p">(</span><span class="n">ArrangedWidget</span><span class="p">.</span><span class="n">Widget</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">ProcessReply</span><span class="p">(</span><span class="n">ThisApplication</span><span class="p">,</span> <span class="n">RoutingPath</span><span class="p">,</span> <span class="n">Reply</span><span class="p">,</span> <span class="n">WidgetsUnderCursor</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">EventCopy</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="c1">// &lt;CODE REMOVED&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">Reply</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>As this code shows, the routing policy is a very important part of Slate routing behavior. Here are the various routing policies:</p>
+<ul>
+<li><a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Private/Framework/Application/SlateApplication.cpp#L199"><code>FDirectPolicy</code></a>: Routes directly to a single widget. That widget is provided to the constructor as <code>InTarget</code>.</li>
+<li><a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Private/Framework/Application/SlateApplication.cpp#L252"><code>FToLeafmostPolicy</code></a>: Routes directly to the last (&ldquo;leafmost&rdquo;) widget in the routing path.</li>
+<li><a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Private/Framework/Application/SlateApplication.cpp#L294"><code>FTunnelPolicy</code></a>: Iterates through each widget in the routing path from the beginning (top) to the end (&ldquo;leafmost&rdquo;).</li>
+<li><a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Private/Framework/Application/SlateApplication.cpp#L335"><code>FBubblePolicy</code></a>: Reverse of <code>FTunnelPolicy</code>, starts with the last (&ldquo;leafmost&rdquo;) widget and iterates in reverse to the first widget (top) in the routing path.</li>
+</ul>
+<p>These routing policies are used in various combinations in the input processing functions in <code>FSlateApplication</code>. The routing path provided to most routing policies is the <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Private/Framework/Application/SlateApplication.cpp#L4507">Slate user&rsquo;s focus path</a>, which is part of how <a href="https://docs.unrealengine.com/5.1/en-US/BlueprintAPI/Widget/SetUserFocus/">focus</a> is implemented. There are too many different input processing functions to describe them all in detail, but now that the overarching steps have been examined picking apart the behavior of a function like <code>FSlateApplication::ProcessKeyDownEvent</code> should be straightforward enough.</p>
+<h3 id="button-widget-input-handling">Button Widget Input Handling</h3>
+<p>At this stage the input event has been dispatched to the correct widget, but now what? Well, there&rsquo;s some generic handling in <code>SWidget</code> to implement behavior such as <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/SlateCore/Private/Widgets/SWidget.cpp#L419">navigation</a>, but for the most part each widget will subclass <code>SWidget</code> and override various input handling functions to implement its own behavior. I am not going to cover every widget in Slate and how it handles input, but I thought it would be useful to provide an example with a very common widget: button.</p>
+<p><a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Public/Widgets/Input/SButton.h"><code>SButton</code></a> is the Slate button subclass which inherits from <code>SWidget</code>. <a href="https://benui.ca/unreal/ui-cpp-slate/">Don&rsquo;t confuse it with <code>UButton</code>!</a> Taking a look at <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Private/Widgets/Input/SButton.cpp#L246"><code>SButton::OnKeyDown</code></a> provides valuable insight into how input events are processed by widgets.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">FReply</span> <span class="n">SButton</span><span class="o">::</span><span class="n">OnKeyDown</span><span class="p">(</span> <span class="k">const</span> <span class="n">FGeometry</span><span class="o">&amp;</span> <span class="n">MyGeometry</span><span class="p">,</span> <span class="k">const</span> <span class="n">FKeyEvent</span><span class="o">&amp;</span> <span class="n">InKeyEvent</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">FReply</span> <span class="n">Reply</span> <span class="o">=</span> <span class="n">FReply</span><span class="o">::</span><span class="n">Unhandled</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">IsEnabled</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">FSlateApplication</span><span class="o">::</span><span class="n">Get</span><span class="p">().</span><span class="n">GetNavigationActionFromKey</span><span class="p">(</span><span class="n">InKeyEvent</span><span class="p">)</span> <span class="o">==</span> <span class="n">EUINavigationAction</span><span class="o">::</span><span class="n">Accept</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// &lt;CODE REMOVED&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">PressMethod</span> <span class="o">==</span> <span class="n">EButtonPressMethod</span><span class="o">::</span><span class="n">ButtonPress</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">//execute our &#34;OnClicked&#34; delegate, and get the reply
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">Reply</span> <span class="o">=</span> <span class="n">ExecuteOnClick</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="c1">//You should ALWAYS handle the OnClicked event.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">ensure</span><span class="p">(</span><span class="n">Reply</span><span class="p">.</span><span class="n">IsEventHandled</span><span class="p">()</span> <span class="o">==</span> <span class="nb">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="c1">// &lt;CODE REMOVED&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// &lt;CODE REMOVED&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>In this case, if the button is enabled, and the input key is <code>EUINavigationAction::Accept</code>, the &ldquo;on click&rdquo; handling for this button is activated. This will eventually result in a broadcast by the Blueprint delegate <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/UMG/Public/Components/Button.h#L68"><code>OnClicked</code></a>, which is the delegate custom user widgets register for to respond to button clicks. There is similar logic in <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Private/Widgets/Input/SButton.cpp#L304"><code>SButton::OnMouseButtonDown</code></a>, where a left click will also eventually broadcast the <code>OnClicked</code> delegate. This is how input makes its way to UMG buttons! This flow is also how the Unreal editor itself processes input, as the editor uses Slate for its UI.</p>
+<p>The next post will cover how inputs finally make their way into gameplay code, including some of the developer facing input systems such as <a href="https://docs.unrealengine.com/5.1/en-US/setting-up-user-inputs-in-unreal-engine/">input Actions and Axes</a>.</p>
+
+
+        
+
+        
+
+        
+      </article>
+
+      
+        
+        <ul class="pager blog-pager pagination justify-content-between">
+          
+            <li class="page-item">
+              <a class="page-link" href="https://trevday.github.io/posts/2023-03-04-unreal-engine-input-part-1-windows-message-processing/" data-toggle="tooltip" data-placement="top" title="Unreal Engine Input Part 1 - Windows Message Processing">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+        
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+        <p class="credits copyright text-muted">
+          
+            <a href="https://trevday.github.io">Trevor Day</a>
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2023
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          Built with <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://trevday.github.io/js/katex.min.js"></script>
+<script src="https://trevday.github.io/js/auto-render.min.js"></script>
+<script src="https://trevday.github.io/js/jquery-3.5.1.slim.min.js"></script><script src="https://trevday.github.io/js/bootstrap-4.4.1.min.js"></script>
+
+<script src="https://trevday.github.io/js/main.js"></script>
+
+
+
+
+
+<script> renderMathInElement(document.body); </script><script src="https://trevday.github.io/js/photoswipe.min.js"></script>
+<script src="https://trevday.github.io/js/photoswipe-ui-default.min.js"></script><script src="https://trevday.github.io/js/load-photoswipe.js"></script><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "be8d9d67ff154e919537f330e500e7c2"}'></script>
+
+
+    
+  </body>
+</html>
+
