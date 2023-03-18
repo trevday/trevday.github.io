@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta http-equiv="Content-Security-Policy" content="default-src https://trevday.github.io https://cloudflareinsights.com; child-src https://www.youtube-nocookie.com; script-src https://trevday.github.io https://static.cloudflareinsights.com; img-src https://trevday.github.io data:" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>Unreal Engine Input Part 3 - Game Input - </title>
+
+
+
+
+
+
+
+		<link rel="apple-touch-icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_180x180_resize_box_3.png" sizes="180x180">
+<link rel="icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_32x32_resize_box_3.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_16x16_resize_box_3.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/32x32.ico">
+
+
+  <meta name="generator" content="Hugo 0.98.0" />
+
+  <link rel="stylesheet" href="https://trevday.github.io/css/katex.min.css" />
+  <link rel="stylesheet" href="https://trevday.github.io/fontawesome/css/all.css" /><link rel="stylesheet" href="https://trevday.github.io/css/bootstrap-custom-4.4.1.min.css" /><link rel="stylesheet" href="https://trevday.github.io/css/main.css" />
+
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/fonts.css" />
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/syntax.css" />
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/codeblock.css" />
+  
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/photoswipe.min.css" />
+  <link rel="stylesheet" href="https://trevday.github.io/css/photoswipe.default-skin.min.css" />
+
+
+  </head>
+  <body>
+    
+<nav class="navbar navbar-light fixed-top navbar-custom navbar-expand-md">
+    <a class="navbar-brand px-3" href="https://trevday.github.io">Trevor Day</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      
+      <ul class="nav navbar-nav ml-auto">
+      
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Posts" href="/posts">Posts</a>
+            </li>
+          
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Professional Work" href="/professional">Professional Work</a>
+            </li>
+          
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Personal Projects" href="/personal">Personal Projects</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              
+              <a class="navlinks-parent px-3">Extra</a>
+              
+              <div class="navlinks-children">
+                
+                  <a href="/archive">College Project Archive</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        
+        <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+        
+            <div class="posts-heading">
+              
+                <h1>Unreal Engine Input Part 3 - Game Input</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  
+  <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+  
+      <article role="main" class="blog-post">
+        <h3 id="engine-version-510">Engine Version: 5.1.0</h3>
+<h3 id="introduction">Introduction</h3>
+<p>There are a variety of tools Unreal Engine provides to <a href="https://docs.unrealengine.com/5.1/en-US/input-overview-in-unreal-engine/">handle user input</a> in a game. These posts aim to break down the code that delivers those inputs, providing insights that could be useful if modifying or extending engine input systems. <em>Unless otherwise noted, the following descriptions apply to both editor and standalone builds.</em></p>
+<p>Part 1 can be found <a href="/posts/2023-03-04-unreal-engine-input-part-1-windows-message-processing">here</a>.
+Part 2 can be found <a href="/posts/2023-03-11-unreal-engine-input-part-2-slate-input-routing">here</a>.</p>
+<h4 id="code-access">Code Access</h4>
+<p>There are links in this post to the Unreal Engine GitHub repository. To gain access follow the instructions <a href="https://www.unrealengine.com/en-US/ue-on-github">here</a>.</p>
+<h2 id="from-slate-to-gameplay">From Slate to Gameplay</h2>
+<p>The previous post explained how input makes its way to Slate and UMG widgets. This post covers the last part of the input stack, which delivers inputs to the game code via <a href="https://docs.unrealengine.com/5.1/en-US/setting-up-user-inputs-in-unreal-engine/">Input Actions and Axes</a>. How do inputs get from Slate to here? The answer is the classes <code>SViewport</code>, <code>FSceneViewport</code>, and <code>UGameViewportClient</code>.</p>
+<p><a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Public/Widgets/SViewport.h"><code>SViewport</code></a> is a subclass of <code>SWidget</code>, and is the Slate widget representation of various viewports in the editor.</p>
+<p><img src="/posts/unreal-engine-input-part-3-game-input/editor_viewports.png" alt="Editor Viewports"></p>
+<p>The viewport is not just for the editor, however, but is also used for rendering the scene view of the game. As with all <code>SWidget</code> subclasses, <code>SViewport</code> overrides the various input handling functions to implement its own specialized logic. For example, this is the implementation of <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Private/Widgets/SViewport.cpp#L284"><code>SViewport::OnKeyDown</code></a>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">FReply</span> <span class="n">SViewport</span><span class="o">::</span><span class="n">OnKeyDown</span><span class="p">(</span> <span class="k">const</span> <span class="n">FGeometry</span><span class="o">&amp;</span> <span class="n">MyGeometry</span><span class="p">,</span> <span class="k">const</span> <span class="n">FKeyEvent</span><span class="o">&amp;</span> <span class="n">KeyEvent</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">ViewportInterface</span><span class="p">.</span><span class="n">IsValid</span><span class="p">()</span> <span class="o">?</span> <span class="n">ViewportInterface</span><span class="p">.</span><span class="n">Pin</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">OnKeyDown</span><span class="p">(</span><span class="n">MyGeometry</span><span class="p">,</span> <span class="n">KeyEvent</span><span class="p">)</span> <span class="o">:</span> <span class="n">FReply</span><span class="o">::</span><span class="n">Unhandled</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>All the input handling functions in <code>SViewport</code> follow this pattern, dispatching to <code>ViewportInterface</code>. <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Public/Widgets/SViewport.h#L248"><code>ViewportInterface</code></a> is a protected member of <code>SViewport</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">TWeakPtr</span><span class="o">&lt;</span><span class="n">ISlateViewport</span><span class="o">&gt;</span> <span class="n">ViewportInterface</span><span class="p">;</span>
+</span></span></code></pre></div><p>This is where <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Public/Slate/SceneViewport.h"><code>FSceneViewport</code></a> comes in. <code>SViewport</code> supports any viewport implementation, as long as it implements <code>ISlateViewport</code>, and for the game scene viewport it will be <code>FSceneViewport</code>. <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/Slate/SceneViewport.cpp#L1042"><code>FSceneViewport::OnKeyDown</code></a> forwards the input event to <code>ViewportClient-&gt;InputKey</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">FReply</span> <span class="n">FSceneViewport</span><span class="o">::</span><span class="n">OnKeyDown</span><span class="p">(</span> <span class="k">const</span> <span class="n">FGeometry</span><span class="o">&amp;</span> <span class="n">InGeometry</span><span class="p">,</span> <span class="k">const</span> <span class="n">FKeyEvent</span><span class="o">&amp;</span> <span class="n">InKeyEvent</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// &lt;CODE REMOVED&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">ViewportClient</span><span class="o">-&gt;</span><span class="n">InputKey</span><span class="p">(</span><span class="n">FInputKeyEventArgs</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">InKeyEvent</span><span class="p">.</span><span class="n">GetInputDeviceId</span><span class="p">(),</span> <span class="n">Key</span><span class="p">,</span> <span class="n">InKeyEvent</span><span class="p">.</span><span class="n">IsRepeat</span><span class="p">()</span> <span class="o">?</span> <span class="nl">IE_Repeat</span> <span class="p">:</span> <span class="n">IE_Pressed</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">,</span> <span class="nb">false</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">CurrentReplyState</span> <span class="o">=</span> <span class="n">FReply</span><span class="o">::</span><span class="n">Unhandled</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// &lt;CODE REMOVED&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>Again, all the input handling functions in <code>FSceneViewport</code> follow roughly this pattern and dispatch to <code>ViewportClient</code>, with one exception which will be explained later on (see &ldquo;Slate End of Frame&rdquo;). <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Public/UnrealClient.h#L650"><code>ViewportClient</code></a> is another protected member, this time of <code>FViewport</code> (which <code>FSceneViewport</code> inherits from):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">FViewportClient</span><span class="o">*</span> <span class="n">ViewportClient</span><span class="p">;</span>
+</span></span></code></pre></div><p>The subclass of <code>FViewportClient</code> used for the game viewport is none other than <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/Engine/GameViewportClient.h"><code>UGameViewportClient</code></a>. Here are the relevant bits of the <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/GameViewportClient.cpp#L620"><code>UGameViewportClient::InputKey</code></a> implementation:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">UGameViewportClient</span><span class="o">::</span><span class="n">InputKey</span><span class="p">(</span><span class="k">const</span> <span class="n">FInputKeyEventArgs</span><span class="o">&amp;</span> <span class="n">InEventArgs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// &lt;CODE REMOVED&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">ULocalPlayer</span><span class="o">*</span> <span class="k">const</span> <span class="n">TargetPlayer</span> <span class="o">=</span> <span class="n">GEngine</span><span class="o">-&gt;</span><span class="n">GetLocalPlayerFromInputDevice</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">EventArgs</span><span class="p">.</span><span class="n">InputDevice</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">TargetPlayer</span> <span class="o">&amp;&amp;</span> <span class="n">TargetPlayer</span><span class="o">-&gt;</span><span class="n">PlayerController</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">bResult</span> <span class="o">=</span> <span class="n">TargetPlayer</span><span class="o">-&gt;</span><span class="n">PlayerController</span><span class="o">-&gt;</span><span class="n">InputKey</span><span class="p">(</span><span class="n">FInputKeyParams</span><span class="p">(</span><span class="n">EventArgs</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span> <span class="n">EventArgs</span><span class="p">.</span><span class="n">Event</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">EventArgs</span><span class="p">.</span><span class="n">AmountDepressed</span><span class="p">),</span> <span class="n">EventArgs</span><span class="p">.</span><span class="n">IsGamepad</span><span class="p">(),</span> <span class="n">EventArgs</span><span class="p">.</span><span class="n">InputDevice</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// &lt;CODE REMOVED&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>Here the viewport client directly interacts with the player controller, so this is game code!</p>
+<p>I want to stop for a moment and clarify why there are three different classes involved in passing input from Slate to the player controller.</p>
+<ul>
+<li><code>SViewport</code> is the subclass of <code>SWidget</code> representing the viewport in the Slate hierarchy. It receives the inputs which Slate routes to it and then dispatches them to its associated viewport implementation, which must implement the interface <code>ISlateViewport</code>. This decouples the Slate viewport widget class from the various viewport implementations.</li>
+<li><code>FSceneViewport</code> is an implementation of the <code>ISlateViewport</code> interface, and represents a <em>scene</em> viewport (a viewport in which the scene graph is rendered). Other <code>ISlateViewport</code>s include <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Editor/GraphEditor/Private/MaterialNodes/SGraphNodeMaterialBase.h#L31"><code>FPreviewViewport</code></a> (used for previewing nodes in the material editor), <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/MoviePlayer/Public/MoviePlayer.h#L28"><code>FMovieViewport</code></a> (used for displaying videos), and more.</li>
+<li><code>UGameViewportClient</code> is a subclass of <code>FViewportClient</code>. The viewport client handles various input, audio, and other events forwarded from the viewport. This separation allows the same viewport to be used in different functional contexts. For example, other subclasses of <code>FViewportClient</code> include <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/UMG/Public/Components/Viewport.h#L101"><code>FUMGViewportClient</code></a> (used for the UMG editor), <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Editor/MaterialEditor/Private/SMaterialEditorViewport.cpp#L45"><code>FMaterialEditorViewportClient</code></a> (used for the material editor), and <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Editor/UnrealEd/Public/LevelEditorViewport.h#L163"><code>FLevelEditorViewportClient</code></a> (used for the scene editor). When the game is being played, the viewport should represent a game instance, so <code>UGameViewportClient</code> is used.</li>
+</ul>
+<h3 id="slate-end-of-frame">Slate End of Frame</h3>
+<p>There is one more important piece to mention. Note that <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/Slate/SceneViewport.cpp#L715"><code>FSceneViewport::OnMouseMove</code></a> fails to call <code>ViewportClient-&gt;InputAxis</code> (this is the exception noted earlier). So where do mouse axis inputs get dispatched? Well, <code>FSceneViewport::OnMouseMove</code> accumulates values into <code>MouseDelta</code>, <code>NumMouseSamplesX</code>, and <code>NumMouseSamplesY</code>. Looking for where these values get used reveals <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/Slate/SceneViewport.cpp#L284"><code>FSceneViewport::ProcessAccumulatedPointerInput</code></a>, which is only called from <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/Slate/SceneViewport.cpp#L1037"><code>FSceneViewport::OnFinishedPointerInput</code></a>. It turns out that in <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Launch/Private/LaunchEngineLoop.cpp#L5351"><code>FEngineLoop::Tick</code></a>, after messages are pumped, <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Slate/Private/Framework/Application/SlateApplication.cpp#L1377"><code>FSlateApplication::FinishedInputThisFrame</code></a> is called. This call indicates the end of an input frame, and gives widgets a chance to process input values accumulated over the course of the frame (like mouse movements). To perform this logic, a particular <code>SWidget</code> would override <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/SlateCore/Public/Widgets/SWidget.h#L660"><code>OnFinishedPointerInput</code></a> or <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/SlateCore/Public/Widgets/SWidget.h#L666"><code>OnFinishedKeyInput</code></a>, as <code>SViewport</code> does to pass along the call to its <code>ViewportInterface</code>. This allows <code>FSceneViewport</code> to batch many potential mouse move events into a single <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/Slate/SceneViewport.cpp#L302"><code>InputAxis</code> call at the end of the input frame</a>. This is useful because the operating system may send Unreal many small mouse move events, which are not synced with the actual framerate of the Unreal game, and this avoids making game code process each move event independently when it only needs to process once per frame.</p>
+<h2 id="player-controller-and-player-input">Player Controller and Player Input</h2>
+<p>After <code>UGameViewportClient</code> extracts the local player controller, it calls the relevant input function. Continuing with the &ldquo;OnKeyDown&rdquo; route, that would be <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/PlayerController.cpp#L2378"><code>APlayerController::InputKey</code></a>. <code>APlayerController::InputKey</code> is actually a virtual function, and <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/GameFramework/PlayerController.h#L240"><code>APlayerController</code></a> is a class which many C++ Unreal games will subclass, so this is already at a point most games could implement some kind of game specific input handling logic. That said, the input here is still pretty raw, and Unreal provides some more nice abstractions which can be leveraged to implement input handling for game specific code. These abstractions are largely implemented by <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/GameFramework/PlayerInput.h#L407"><code>UPlayerInput</code></a>. <code>APlayerController</code> dispatches to <code>UPlayerInput</code> inside <code>APlayerController::InputKey</code> and its other input handling functions.</p>
+<p>This is an area of the code that is better documented, and I definitely recommend reading the official documentation on <a href="https://docs.unrealengine.com/5.1/en-US/input-overview-in-unreal-engine/"><code>UPlayerInput</code></a>. Epic has also been adding a lot of useful functionality in this area in the form of plugins, namely the <a href="https://docs.unrealengine.com/5.1/en-US/enhanced-input-in-unreal-engine/">Enhanced Input plugin</a> and the <a href="https://docs.unrealengine.com/5.1/en-US/rawinput-plugin-in-unreal-engine/">Raw Input plugin</a>.</p>
+<p>So <code>UPlayerInput</code> (or <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Plugins/EnhancedInput/Source/EnhancedInput/Public/EnhancedPlayerInput.h"><code>UEnhancedPlayerInput</code></a> if using the Enhanced Input plugin) has now received the input via <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/UserInterface/PlayerInput.cpp#L215"><code>UPlayerInput::InputKey</code></a>, or one of the other input handling functions. Picking through this function, however, it doesn&rsquo;t look like the Input Action associated with the key is being called anywhere. Instead, this function <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/UserInterface/PlayerInput.cpp#L248">modifies</a> the <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/GameFramework/PlayerInput.h#L557"><code>KeyStateMap</code></a> member variable of <code>UPlayerInput</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">TMap</span><span class="o">&lt;</span><span class="n">FKey</span><span class="p">,</span><span class="n">FKeyState</span><span class="o">&gt;</span> <span class="n">KeyStateMap</span><span class="p">;</span>
+</span></span></code></pre></div><p>The <code>KeyStateMap</code> actually gets processed later, during <code>UPlayerInput::ProcessInputStack</code>, and Input Actions and Axes are activated. This is because the <a href="https://docs.unrealengine.com/5.1/Images/making-interactive-experiences/Input/input-overview/InputFlow.webp">input processing procedure</a> for player controllers, pawns, and other input enabled game objects must be followed.</p>
+<h3 id="building-the-player-input-stack">Building the Player Input Stack</h3>
+<p>Before diving in to <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/UserInterface/PlayerInput.cpp#L1079"><code>UPlayerInput::ProcessInputStack</code></a>, I want to discuss where it is called from and what its arguments are, which will be crucial to understanding why it is organized this way. <code>UPlayerInput::ProcessInputStack</code> is called from <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/PlayerController.cpp#L2691"><code>APlayerController::ProcessPlayerInput</code></a>, which in turn is called from <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/PlayerController.cpp#L4901"><code>APlayerController::TickPlayerInput</code></a>, which is called from <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/PlayerController.cpp#L2301"><code>APlayerController::PlayerTick</code></a>. <code>APlayerController::PlayerTick</code> is called in <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/PlayerController.cpp#L4958"><code>APlayerController::TickActor</code></a> only <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/PlayerController.cpp#L5107">if <code>PlayerInput</code> is valid</a>. This means that player input for gameplay purposes is processed during the tick of player controller, and not during message pumping (recall from <a href="/posts/2023-03-04-unreal-engine-input-part-1-windows-message-processing">part one</a> of this post series that most of the previous content covered would be run in the same call stack as processing Window Messages from the operating system). Even though operating system messages are processed in the game thread, it is still beneficial to process inputs directly related to game objects during the tick of those game objects. Note that this is <em>different</em> from Slate/UMG widgets, which will process their inputs as part of message pumping.</p>
+<p>Returning to <code>APlayerController::ProcessPlayerInput</code>, there is another important call here to <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/PlayerController.cpp#L2632"><code>APlayerController::BuildInputStack</code></a>. The output of this function is then passed in to <code>UPlayerInput::ProcessInputStack</code> as the argument:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">const</span> <span class="n">TArray</span><span class="o">&lt;</span><span class="n">UInputComponent</span><span class="o">*&gt;&amp;</span> <span class="n">InputComponentStack</span>
+</span></span></code></pre></div><p>Each <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/Components/InputComponent.h"><code>UInputComponent</code></a> allows its owning Actor to bind delegates to input events. Essentially, any Actor that wants to react to inputs needs a <code>UInputComponent</code>. These <code>UInputComponent</code>s are then processed into a stack structure according to the rules of the input processing procedure (see image below), with components at the top (back of the array) given first dibs on inputs over components at the bottom (front of the array).</p>
+<p><img src="/posts/unreal-engine-input-part-3-game-input/input_processing_procedure.png" alt="Input Processing Procedure"></p>
+<p>This stack construction can be observed in the implementation of <code>APlayerController::BuildInputStack</code>.</p>
+<p>Epic has built a helpful visual utility for debugging the input stack for a player controller. Using the console command <code>ShowDebug INPUT</code> in the editor will display the input stack. This is implemented by the function <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/PlayerController.cpp#L3289"><code>APlayerController::DisplayDebug</code></a>.</p>
+<p><img src="/posts/unreal-engine-input-part-3-game-input/input_stack_debug.png" alt="Input Stack Debugging"></p>
+<p>These are the ways in which a <code>UInputComponent</code> can be registered with the player controller:</p>
+<ul>
+<li><a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/Actor.cpp#L4160"><code>AActor::EnableInput</code></a> or the <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h#L683"><code>AutoReceiveInput</code></a> variable in <code>AActor</code></li>
+<li><a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/PlayerController.cpp#L2615"><code>APlayerController::SetupInputComponent</code></a></li>
+<li><a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/Pawn.cpp#L722"><code>APawn::CreatePlayerInputComponent</code></a> and <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/GameFramework/Pawn.h#L438"><code>APawn::SetupPlayerInputComponent</code></a></li>
+<li><a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/UMG/Private/UserWidget.cpp#L1507"><code>UUserWidget::ListenForInputAction</code></a> or <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/UMG/Private/UserWidget.cpp#L1623"><code>UUserWidget::InitializeInputComponent</code></a> (this is cool because it allows listening for Input Actions from UMG!)</li>
+</ul>
+<p><code>UInputComponent</code>s <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/Components/InputComponent.h#L762">have some fields</a> which affect construction and processing of the <code>UInputComponent</code> stack, and the comments do a good job explaining what each does:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cm">/** The priority of this input component when pushed in to the stack. */</span>
+</span></span><span class="line"><span class="cl"><span class="n">int32</span> <span class="n">Priority</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/** Whether any components lower on the input stack should be allowed to receive input. */</span>
+</span></span><span class="line"><span class="cl"><span class="n">uint8</span> <span class="nl">bBlockInput</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+</span></span></code></pre></div><h3 id="processing-the-player-input-stack">Processing the Player Input Stack</h3>
+<p>Now it is time to go all the way back to <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/UserInterface/PlayerInput.cpp#L1079"><code>UPlayerInput::ProcessInputStack</code></a>. In this function the Input Actions and Axes are activated. (<em>Note that the implementation of this function may differ if you are using an input plugin such as the Enhanced Input plugin.</em>) As described in the <a href="https://docs.unrealengine.com/5.1/en-US/input-overview-in-unreal-engine/">Unreal documentation</a>, Input Actions and Axes can be configured from the Project Settings in the Input tab:</p>
+<p><img src="/posts/unreal-engine-input-part-3-game-input/action_mappings.png" alt="Edit Action Mappings"></p>
+<p>This configuration is stored in <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/GameFramework/InputSettings.h"><code>UInputSettings</code></a>, which exposes functions such as <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/GameFramework/InputSettings.h#L215"><code>UInputSettings::GetActionNames</code></a> and <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/GameFramework/InputSettings.h#L219"><code>UInputSettings::GetAxisNames</code></a> that can be used to interact with configured values.</p>
+<p>Stepping through <code>UPlayerInput::ProcessInputStack</code> will reveal how those Input Actions and Axes get activated:</p>
+<ol>
+<li><a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/UserInterface/PlayerInput.cpp#L764"><code>UPlayerInput::ConditionalBuildKeyMappings</code></a> populates a cache which maps the Action or Axis name to the set of inputs that activate it. This step is taken because the initial format of the data provided by configuration is just an array of <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/GameFramework/PlayerInput.h#L143"><code>FInputActionKeyMapping</code></a> or <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/GameFramework/PlayerInput.h#L211"><code>FInputAxisKeyMapping</code></a>.</li>
+<li>The <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/UserInterface/PlayerInput.cpp#L1129"><code>KeyStateMap</code> is iterated over</a> and any input events (&ldquo;pressed&rdquo;, &ldquo;released&rdquo;, etc.) are copied over to local variables.</li>
+<li>The <code>UInputComponent</code> stack is <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/UserInterface/PlayerInput.cpp#L1213">walked from top to bottom</a>, and for each <code>UInputComponent</code> the following processing is performed:
+<ol>
+<li><a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/Components/InputComponent.cpp#L26"><code>UInputComponent::ConditionalBuildKeyMap</code></a> populates another cache, this time mapping each input to the <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/Components/InputComponent.h#L327"><code>FInputActionBinding</code></a> or <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/Components/InputComponent.h#L492"><code>FInputAxisBinding</code></a> it would activate. These structs represent delegates bound to the <code>UInputComponent</code> for each Action or Axis. How these delegates get bound will be discussed in a moment. This cache essentially removes the middleman Action or Axis concept and directly maps inputs to the functionality that will be run by triggering an event for that input.</li>
+<li>For each input, <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/UserInterface/PlayerInput.cpp#L1226">the potential Action bindings for this <code>UInputComponent</code> are accumulated</a>.</li>
+<li>For each potential Action, the potential <a href="https://en.wikipedia.org/wiki/Chorded_keyboard">chords</a> for this <code>UInputComponent</code> <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/UserInterface/PlayerInput.cpp#L1232">are accumulated</a>.</li>
+<li>Each <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/UserInterface/PlayerInput.cpp#L1244">chord is allowed to capture and/or consume the input as needed</a>, and any Action delegates <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/UserInterface/PlayerInput.cpp#L1272">which should be called are accumulated into <code>NonAxisDelegates</code></a>.</li>
+<li><a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/UserInterface/PlayerInput.cpp#L1277">Touch and gesture bindings are handled now</a>, but I&rsquo;m not going to cover these any further.</li>
+<li>Now it&rsquo;s time for Axis bindings. <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/UserInterface/PlayerInput.cpp#L1335">Instead of iterating over the inputs, the Axis bindings themselves are iterated over</a>, and for each one the value of the Axis is pulled from the input, and then consumed if necessary. Any delegates that should be called are accumulated into <code>AxisDelegates</code>.</li>
+<li>If this <code>UInputComponent</code> has <code>bBlockInput</code> set to true, <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/UserInterface/PlayerInput.cpp#L1392">then it will break the loop</a> to prevent continued processing of any <code>UInputComponent</code>s beneath it in the stack.</li>
+</ol>
+</li>
+<li>Since the <code>UInputComponent</code> loop might have had an early break if one of them had <code>bBlockInput</code> set to true, <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/UserInterface/PlayerInput.cpp#L1411">the rest of the <code>UInputComponent</code>s in the stack need to be iterated over and their Axis values need to be set to zero</a>.</li>
+<li><a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Private/UserInterface/PlayerInput.cpp#L1433">Now all delegates that were accumulated get dispatched</a>.</li>
+</ol>
+<p>So where do these delegates get bound? In C++ there are a variety of templated binding functions available on <code>UInputComponent</code>, such as <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/Components/InputComponent.h#L873"><code>UInputComponent::BindAction</code></a>, <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/Components/InputComponent.h#L909"><code>UInputComponent::BindAxis</code></a>, <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/Components/InputComponent.h#L971"><code>UInputComponent::BindVectorAxis</code></a>, and more. These functions will all create a new binding struct and add it to the <code>UInputComponent</code>&rsquo;s array of those bindings.</p>
+<p>In Blueprint binding delegates to Input Actions and Axes is even easier, as Epic has added some nice functionality to enable responding to Input Actions and Axes. The dynamic node <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Editor/BlueprintGraph/Classes/K2Node_InputAction.h"><code>UK2Node_InputAction</code></a> and <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Editor/BlueprintGraph/Classes/K2Node_InputAxisEvent.h"><code>UK2Node_InputAxisEvent</code></a> generate their possible options at editor runtime from the Input Action and Axis configuration. This allows creating nodes like the one in the following image.</p>
+<p><img src="/posts/unreal-engine-input-part-3-game-input/dynamic_input_node.png" alt="Dynamic Input Node"></p>
+<p>I won&rsquo;t elaborate further on how dynamic Blueprint nodes work, see <a href="https://timrademaker.com/posts/custom-blueprint-nodes-using-unreal-engines-k2-nodes/">this guide on creating custom Blueprint nodes for more info</a>.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>So that&rsquo;s it! The whole Unreal Engine input stack from beginning to end, from operating system message all the way to Blueprint Input Action handling. For most games, the existing input handling options will be enough. And with the new <a href="https://docs.unrealengine.com/5.1/en-US/enhanced-input-in-unreal-engine/">Enhanced Input plugin</a>, Epic has further expanded the suite of available functionality. But maybe there&rsquo;s a game feature which requires adding some custom logic to Slate input handling. Or an input preprocessor is needed to identify when the player is using a controller versus a mouse and keyboard. There are use cases for inserting custom logic into the input stack, and I hope this guide is helpful when doing so!</p>
+
+
+        
+
+        
+
+        
+      </article>
+
+      
+        
+        <ul class="pager blog-pager pagination justify-content-between">
+          
+            <li class="page-item">
+              <a class="page-link" href="https://trevday.github.io/posts/2023-03-11-unreal-engine-input-part-2-slate-input-routing/" data-toggle="tooltip" data-placement="top" title="Unreal Engine Input Part 2 - Slate Input Routing">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+        
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+        <p class="credits copyright text-muted">
+          
+            <a href="https://trevday.github.io">Trevor Day</a>
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2023
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          Built with <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://trevday.github.io/js/katex.min.js"></script>
+<script src="https://trevday.github.io/js/auto-render.min.js"></script>
+<script src="https://trevday.github.io/js/jquery-3.5.1.slim.min.js"></script><script src="https://trevday.github.io/js/bootstrap-4.4.1.min.js"></script>
+
+<script src="https://trevday.github.io/js/main.js"></script>
+
+
+
+
+
+<script> renderMathInElement(document.body); </script><script src="https://trevday.github.io/js/photoswipe.min.js"></script>
+<script src="https://trevday.github.io/js/photoswipe-ui-default.min.js"></script><script src="https://trevday.github.io/js/load-photoswipe.js"></script><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "be8d9d67ff154e919537f330e500e7c2"}'></script>
+
+
+    
+  </body>
+</html>
+
