@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta http-equiv="Content-Security-Policy" content="default-src https://trevday.github.io https://cloudflareinsights.com; child-src https://www.youtube-nocookie.com; script-src https://trevday.github.io https://static.cloudflareinsights.com; img-src https://trevday.github.io data:" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>Generic Blueprint Functions in Unreal Engine - </title>
+
+
+
+
+
+
+
+		<link rel="apple-touch-icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_180x180_resize_box_3.png" sizes="180x180">
+<link rel="icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_32x32_resize_box_3.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/node_logo_180x180_hu53ef4003ee44219f47742cf51367cb42_27938_16x16_resize_box_3.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/32x32.ico">
+
+
+  <meta name="generator" content="Hugo 0.98.0" />
+
+  <link rel="stylesheet" href="https://trevday.github.io/css/katex.min.css" />
+  <link rel="stylesheet" href="https://trevday.github.io/fontawesome/css/all.css" /><link rel="stylesheet" href="https://trevday.github.io/css/bootstrap-custom-4.4.1.min.css" /><link rel="stylesheet" href="https://trevday.github.io/css/main.css" />
+
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/fonts.css" />
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/syntax.css" />
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/codeblock.css" />
+  
+  
+  <link rel="stylesheet" href="https://trevday.github.io/css/photoswipe.min.css" />
+  <link rel="stylesheet" href="https://trevday.github.io/css/photoswipe.default-skin.min.css" />
+
+
+  </head>
+  <body>
+    
+<nav class="navbar navbar-light fixed-top navbar-custom navbar-expand-md">
+    <a class="navbar-brand px-3" href="https://trevday.github.io">Trevor Day</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      
+      <ul class="nav navbar-nav ml-auto">
+      
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Posts" href="/posts">Posts</a>
+            </li>
+          
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Professional Work" href="/professional">Professional Work</a>
+            </li>
+          
+        
+          
+            
+            <li class="px-3">
+            
+              <a title="Personal Projects" href="/personal">Personal Projects</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              
+              <a class="navlinks-parent px-3">Extra</a>
+              
+              <div class="navlinks-children">
+                
+                  <a href="/archive">College Project Archive</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        
+        <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+        
+            <div class="posts-heading">
+              
+                <h1>Generic Blueprint Functions in Unreal Engine</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  
+  <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+  
+      <article role="main" class="blog-post">
+        <h3 id="engine-version-510">Engine Version: 5.1.0</h3>
+<h4 id="code-access">Code Access</h4>
+<p>There are links in this post to the Unreal Engine GitHub repository. To gain access follow the instructions <a href="https://www.unrealengine.com/en-US/ue-on-github">here</a>.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Generic code is a powerful tool. When working with Unreal Engine source code, which is written in C++, <a href="https://learn.microsoft.com/en-us/cpp/cpp/templates-cpp">templates</a> can be used to write generic classes, functions, and more. But with C++ functions exposed to Blueprint, options are more limited. A <code>UFUNCTION</code> such as</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">TestFunction</span><span class="p">(</span><span class="n">T</span><span class="o">*</span> <span class="n">Arg</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* some code here */</span> <span class="p">}</span>
+</span></span></code></pre></div><p>will compile successfully, but <code>TestFunction</code> will not be available for use in Blueprint. It will simply not appear.</p>
+<p>This is because Unreal Header Tool is not able to parse the type of <code>Arg</code>, as <code>T</code> could be any type! And if Unreal Header Tool does not know the type of <code>Arg</code> at native compile time, it is not able to auto-generate the Blueprint bindings. Fortunately there are ways around this limitation that allow the creation of generic C++ functions exposed to Blueprint, although it is a more involved process than simply putting <code>UFUNCTION(BlueprintCallable)</code> on the declaration.</p>
+<h2 id="determinesoutputtype">DeterminesOutputType</h2>
+<p>Before jumping ahead to the more complex case, I want to mention a &ldquo;simple&rdquo; case that is handled by a convenient <code>UFUNCTION</code> property called <a href="https://docs.unrealengine.com/5.1/en-US/metadata-specifiers-in-unreal-engine/"><code>DeterminesOutputType</code></a>. In Unreal, a common form of function template is one which returns a <code>UObject*</code> cast to an expected subclass. For example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">T</span><span class="o">*</span> <span class="n">FindComponentByClass</span><span class="p">()</span> <span class="k">const</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">static_assert</span><span class="p">(</span><span class="n">TPointerIsConvertibleFromTo</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="k">const</span> <span class="n">UActorComponent</span><span class="o">&gt;::</span><span class="n">Value</span><span class="p">,</span> <span class="s">&#34;&#39;T&#39; template parameter to FindComponentByClass must be derived from UActorComponent&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="p">(</span><span class="n">T</span><span class="o">*</span><span class="p">)</span><span class="n">FindComponentByClass</span><span class="p">(</span><span class="n">T</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The Blueprint exposed version of this function is the following:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span> <span class="n">Category</span> <span class="o">=</span> <span class="s">&#34;Actor&#34;</span><span class="p">,</span> <span class="n">meta</span> <span class="o">=</span> <span class="p">(</span><span class="n">ComponentClass</span> <span class="o">=</span> <span class="s">&#34;/Script/Engine.ActorComponent&#34;</span><span class="p">),</span> <span class="n">meta</span> <span class="o">=</span> <span class="p">(</span><span class="n">DeterminesOutputType</span> <span class="o">=</span> <span class="s">&#34;ComponentClass&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">UActorComponent</span><span class="o">*</span> <span class="n">GetComponentByClass</span><span class="p">(</span><span class="n">TSubclassOf</span><span class="o">&lt;</span><span class="n">UActorComponent</span><span class="o">&gt;</span> <span class="n">ComponentClass</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+</span></span></code></pre></div><p>Here <code>DeterminesOutputType</code> specifies that the output <code>UActorComponent*</code> pin, in Blueprint, should be automatically set to the subclass specified by the <code>ComponentClass</code> argument. This only works if a constant value is provided for <code>ComponentClass</code> when <code>GetComponentByClass</code> is called in Blueprint. Otherwise the type reverts to <code>UActorComponent*</code>.</p>
+<h2 id="customstructureparam">CustomStructureParam</h2>
+<p><a href="https://docs.unrealengine.com/5.1/en-US/metadata-specifiers-in-unreal-engine/"><code>CustomStructureParam</code></a> is a <code>UFUNCTION</code> property which enables a C++ function exposed to Blueprint to accept a wildcard value as one of its arguments. Wildcard is Blueprint&rsquo;s version of a generic type. Wildcard pins on a Blueprint node will accept any type, but once connected the pin converts to match the type that was connected. For example, a wildcard pin is the basis of the <a href="https://docs.unrealengine.com/5.1/en-US/BlueprintAPI/Utilities/Select/">Select</a> node. Declaring a function argument as a wildcard is crucial to writing a generic Blueprint function, and this is what <code>CustomStructureParam</code> enables. Even though it has the word &ldquo;structure&rdquo; in it, the types it can accept are not limited to <code>UStruct</code>s. Pretty much any type can be passed into a wildcard, including containers (if handled properly).</p>
+<p>Here is an example of a function using <code>CustomStructureParam</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="p">(</span><span class="n">CustomStructureParam</span><span class="o">=</span><span class="s">&#34;GenericArg&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">TestFunction</span><span class="p">(</span><span class="k">const</span> <span class="n">int32</span><span class="o">&amp;</span> <span class="n">GenericArg</span><span class="p">);</span>
+</span></span></code></pre></div><p><code>GenericArg</code> will be a wildcard pin.</p>
+<p>There are other properties that enable generic arguments for a <code>UFUNCTION</code>:</p>
+<ul>
+<li><code>ArrayParm</code>: Allows arrays with a wildcard internal type to be passed as an argument</li>
+<li><code>ArrayTypeDependentParms</code>: The type of this argument will be set to match the internal type of the array passed in, depends on <code>ArrayParm</code></li>
+<li><code>SetParam</code>: Allows sets with a wildcard internal type to be passed as an argument; also allows dependent parameters to be specified, separated from the set parameter by a <code>|</code> (for example, <code>SetParam = &quot;TargetSet|Item&quot;</code>)</li>
+<li><code>MapParam</code>: Allows maps with a wildcard key and value type to be passed as an argument</li>
+<li><code>MapKeyParam</code>: The type of this argument will be set to match the key type of the map passed in, depends on <code>MapParam</code></li>
+<li><code>MapValueParam</code>: The type of this argument will be set to match the value type of the map passed in, depends on <code>MapParam</code></li>
+</ul>
+<h2 id="customthunk">CustomThunk</h2>
+<p>Now that the <code>UFUNCTION</code> accepts a wildcard parameter, the native code must be able to handle that wildcard parameter. But the type of <code>GenericArg</code> is just a <code>const int32&amp;</code> from the perspective of native, so how does that work? This is where <a href="https://docs.unrealengine.com/5.1/en-US/API/Editor/BlueprintGraph/FBlueprintMetadata/MD_CustomThunk/"><code>CustomThunk</code></a> comes in. <code>CustomThunk</code> is a <code>UFUNCTION</code> property that indicates the function should <em>not</em> have a <a href="https://en.wikipedia.org/wiki/Thunk">thunk</a> auto-generated for it. In this context, thunk refers to the binding between Blueprint and native that is responsible for retrieving arguments from the Blueprint virtual machine and passing them along to the native function. It is also responsible for passing the return value of the native function back to the Blueprint virtual machine. In most cases this boilerplate can be auto-generated, but for a function with wildcard arguments the auto-generation will not work because the argument types are unknown at native compile time. This technique is used by Epic themselves to implement container functionality such as <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/Kismet/KismetArrayLibrary.h#L30"><code>Array_Add</code></a>, <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/Kismet/BlueprintMapLibrary.h#L49"><code>Map_Find</code></a>, and so on.</p>
+<p>Here is <code>TestFunction</code> updated with the <code>CustomThunk</code> property:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span> <span class="n">CustomThunk</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="p">(</span><span class="n">CustomStructureParam</span><span class="o">=</span><span class="s">&#34;GenericArg&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">TestFunction</span><span class="p">(</span><span class="k">const</span> <span class="n">int32</span><span class="o">&amp;</span> <span class="n">GenericArg</span><span class="p">);</span>
+</span></span></code></pre></div><p>The actual implementation of the <code>CustomThunk</code> should be declared using the <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L714">macro</a> <code>DECLARE_FUNCTION(execTestFunction)</code>. Under the hood, this macro declares a function with this signature:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="n">execTestFunction</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span> <span class="n">Context</span><span class="p">,</span> <span class="n">FFrame</span><span class="o">&amp;</span> <span class="n">Stack</span><span class="p">,</span> <span class="n">RESULT_DECL</span><span class="p">)</span>
+</span></span></code></pre></div><p>Since the real function will be implemented by <code>execTestFunction</code>, the <code>TestFunction</code> declaration above is just to emit the Blueprint bindings. But that function will never be called, so it can be changed to:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span> <span class="n">CustomThunk</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="p">(</span><span class="n">CustomStructureParam</span><span class="o">=</span><span class="s">&#34;GenericArg&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">TestFunction</span><span class="p">(</span><span class="k">const</span> <span class="n">int32</span><span class="o">&amp;</span> <span class="n">GenericArg</span><span class="p">)</span> <span class="p">{</span> <span class="n">check</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span> <span class="cm">/* this should never be called */</span> <span class="p">}</span>
+</span></span></code></pre></div><h3 id="implementing-the-custom-thunk">Implementing the Custom Thunk</h3>
+<p>The custom thunk must be able to handle an argument of any expected type. For example, Unreal&rsquo;s implementation of <a href="https://github.com/EpicGames/UnrealEngine/blob/5.1.0-release/Engine/Source/Runtime/Engine/Classes/Kismet/KismetArrayLibrary.h#L296"><code>Array_Add</code></a> (code below) accepts any type that is a valid inner type for the array. I have added inline comments to describe what is happening in the following code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">DECLARE_FUNCTION</span><span class="p">(</span><span class="n">execArray_Add</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// MostRecentProperty is of type FProperty*. It describes the type information
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// of the most recent returned value. It is assigned to nullptr here
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// to guarantee that it is not accidentally left with stale data
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// after calling StepCompiledIn.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Steps the Blueprint virtual machine. The template parameter is the expected type
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// to be returned. In this case the first argument of Array_Add is an array, so
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// an FArrayProperty is expected. The argument for StepCompiledIn is a pointer to
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// where the returned value should be set, like an out parameter. NULL is provided
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// here to indicate that the returned value should just be left in
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// MostRecentPropertyAddress, used on the next line.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FArrayProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// MostRecentPropertyAddress is of type uint8*. It is the address of the data for the most
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// recent returned item. Its type info is described by MostRecentProperty. In this
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// case it should be an array.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">void</span><span class="o">*</span> <span class="n">ArrayAddr</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Again, array is expected, so cast MostRecentProperty to a FArrayProperty.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">FArrayProperty</span><span class="o">*</span> <span class="n">ArrayProperty</span> <span class="o">=</span> <span class="n">CastField</span><span class="o">&lt;</span><span class="n">FArrayProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">ArrayProperty</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// If the first argument is not an array, something has gone horribly wrong.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// bArrayContextFailed can be set to emergency exit a CustomThunk. Even
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// though the name specifies &#34;Array&#34;, this can actually be used in any
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// CustomThunk to exit early. It lets the Blueprint virtual machine know
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// that not all arguments for this function were processed, and the
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// virtual machine will do its best to skip ahead to the next Blueprint
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// function, passing over any unused arguments from this CustomThunk.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">Stack</span><span class="p">.</span><span class="n">bArrayContextFailed</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// The inner type of the array can be found by consulting its Inner FProperty.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">const</span> <span class="n">FProperty</span><span class="o">*</span> <span class="n">InnerProp</span> <span class="o">=</span> <span class="n">ArrayProperty</span><span class="o">-&gt;</span><span class="n">Inner</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="c1">// This block is identifying the size of the inner array type and allocating
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// some stack local memory for it.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// (See https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/alloca?view=msvc-170
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// for more information on alloca.)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Then it default initializes the value.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">const</span> <span class="n">int32</span> <span class="n">PropertySize</span> <span class="o">=</span> <span class="n">InnerProp</span><span class="o">-&gt;</span><span class="n">ElementSize</span> <span class="o">*</span> <span class="n">InnerProp</span><span class="o">-&gt;</span><span class="n">ArrayDim</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">void</span><span class="o">*</span> <span class="n">StorageSpace</span> <span class="o">=</span> <span class="n">FMemory_Alloca</span><span class="p">(</span><span class="n">PropertySize</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">InnerProp</span><span class="o">-&gt;</span><span class="n">InitializeValue</span><span class="p">(</span><span class="n">StorageSpace</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Now the second argument, which is of an unknown type but should correspond to
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// ArrayProperty-&gt;Inner, is retrieved. The StorageSpace allocated above is used
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// to hold the value.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyContainer</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StorageSpace</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// P_FINISH increments the Blueprint virtual machine bytecode pointer, indicating
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// this Blueprint function is finished.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">P_FINISH</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// P_NATIVE_BEGIN indicates the start of native code called from Blueprint. Right now
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// it is used for profiling purposes.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">P_NATIVE_BEGIN</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// MARK_PROPERTY_DIRTY is related to replication, and I will not cover it here.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">MARK_PROPERTY_DIRTY</span><span class="p">(</span><span class="n">Stack</span><span class="p">.</span><span class="n">Object</span><span class="p">,</span> <span class="n">ArrayProperty</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// GenericArray_Add is the C++ function which actually performs the array add operation.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Array_Add returns an int32 which is the index of the added element. RESULT_PARAM is the
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// out parameter for return values, so it is assigned to here.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="o">*</span><span class="p">(</span><span class="n">int32</span><span class="o">*</span><span class="p">)</span><span class="n">RESULT_PARAM</span> <span class="o">=</span> <span class="n">GenericArray_Add</span><span class="p">(</span><span class="n">ArrayAddr</span><span class="p">,</span> <span class="n">ArrayProperty</span><span class="p">,</span> <span class="n">StorageSpace</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// P_NATIVE_END indicates the end of native code called from Blueprint.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">P_NATIVE_END</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Last, the locally stored second argument should be cleaned up and have its destructor
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// run if necessary.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">InnerProp</span><span class="o">-&gt;</span><span class="n">DestroyValue</span><span class="p">(</span><span class="n">StorageSpace</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Another example is accepting a <code>UStruct</code> of any type in order to perform some operation with it. This could look something like the following:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">DECLARE_FUNCTION</span><span class="p">(</span><span class="n">execTestFunction_Struct</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FStructProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="k">nullptr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">const</span> <span class="n">FStructProperty</span><span class="o">*</span> <span class="n">StructProperty</span> <span class="o">=</span> <span class="n">CastField</span><span class="o">&lt;</span><span class="n">FStructProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">StructProperty</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">Stack</span><span class="p">.</span><span class="n">bArrayContextFailed</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// UScriptStruct is the reflection data for a UStruct
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">const</span> <span class="n">UScriptStruct</span><span class="o">*</span> <span class="n">ScriptStruct</span> <span class="o">=</span> <span class="n">StructProperty</span><span class="o">-&gt;</span><span class="n">Struct</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// This will be the actual data for the instance of the UStruct
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">void</span><span class="o">*</span> <span class="n">StructData</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Do something with script struct and struct data
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>Something that may be useful is <a href="https://dev.epicgames.com/community/learning/tutorials/381o/unreal-engine-a-not-so-brief-intro-to-k2nodes">creating custom nodes</a> to wrap the <code>CustomThunk</code>, which enables auto-generation of nodes specialized for particular types. However, I will not cover that here.</p>
+<p>Wildcard function arguments and custom thunks are useful for writing generic C++ functions exposed to Blueprint. Although nowhere near as powerful as C++ templates, they are still a useful tool in many cases.</p>
+
+
+        
+
+        
+
+        
+      </article>
+
+      
+        
+        <ul class="pager blog-pager pagination justify-content-between">
+          
+            <li class="page-item">
+              <a class="page-link" href="https://trevday.github.io/posts/2023-03-18-unreal-engine-input-part-3-game-input/" data-toggle="tooltip" data-placement="top" title="Unreal Engine Input Part 3 - Game Input">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+        
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row justify-content-center">
+	<div class="col-xl-10 col-lg-12">
+        <p class="credits copyright text-muted">
+          
+            <a href="https://trevday.github.io">Trevor Day</a>
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2023
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          Built with <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://trevday.github.io/js/katex.min.js"></script>
+<script src="https://trevday.github.io/js/auto-render.min.js"></script>
+<script src="https://trevday.github.io/js/jquery-3.5.1.slim.min.js"></script><script src="https://trevday.github.io/js/bootstrap-4.4.1.min.js"></script>
+
+<script src="https://trevday.github.io/js/main.js"></script>
+
+
+
+
+
+<script> renderMathInElement(document.body); </script><script src="https://trevday.github.io/js/photoswipe.min.js"></script>
+<script src="https://trevday.github.io/js/photoswipe-ui-default.min.js"></script><script src="https://trevday.github.io/js/load-photoswipe.js"></script><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "be8d9d67ff154e919537f330e500e7c2"}'></script>
+
+
+    
+  </body>
+</html>
+

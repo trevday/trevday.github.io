@@ -4,6 +4,7 @@ User-agent: *
 
 Disallow: /
 Disallow: /posts/
+Disallow: /posts/2023-06-18-unreal-engine-generic-blueprint-functions/
 Disallow: /posts/2023-03-18-unreal-engine-input-part-3-game-input/
 Disallow: /posts/2023-03-11-unreal-engine-input-part-2-slate-input-routing/
 Disallow: /posts/2023-03-04-unreal-engine-input-part-1-windows-message-processing/
